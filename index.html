@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>홍유진 · GAME ARTIST</title>
+<meta name="description" content="홍유진 — Game Artist. 2D 게임 아트 · 캐릭터 디자인 · 3D 시네마틱 · 일러스트."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0b0e;
+  --bg2:#101218;
+  --panel:#0e1015;
+  --line:rgba(255,255,255,.12);
+  --line2:rgba(255,255,255,.06);
+  --txt:#e9e7e0;
+  --dim:rgba(233,231,224,.5);
+  --dim2:rgba(233,231,224,.3);
+  --dim3:rgba(233,231,224,.18);
+  /* ── ACCENT — 이 3줄만 바꾸면 사이트 전체 포인트 색이 바뀝니다 ── */
+  /* 청록:#4ff0c0 / 라임:#c2ff3d / 앰버:#ffb02e / 레드:#ff4438 */
+  --acc:#ffb02e;
+  --acc-dim:rgba(255,176,46,.5);
+  --acc-glow:rgba(255,176,46,.28);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Galmuri11','JetBrains Mono',monospace;
+  background:var(--bg);color:var(--txt);overflow-x:hidden;
+  -webkit-font-smoothing:none;font-smooth:never;
+  image-rendering:pixelated;
+}
+body.locked{overflow:hidden}
+/* faint grid + scanline atmosphere */
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0,rgba(0,0,0,.16) 1px,transparent 1px,transparent 3px);
+  mix-blend-mode:multiply;opacity:.45;
+}
+::selection{background:var(--acc);color:#000}
+a{color:inherit}
+
+.mono{font-family:'JetBrains Mono',monospace}
+.acc{color:var(--acc)}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(10,11,14,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Galmuri14','Galmuri11',monospace;font-size:1rem;font-weight:700;letter-spacing:.04em;color:var(--txt);text-decoration:none}
+.logo b{color:var(--acc);text-shadow:0 0 8px var(--acc-glow)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim2);text-decoration:none;transition:color .15s}
+.nav-links a::before{content:'';color:var(--acc)}
+.nav-links a:hover{color:var(--acc)}
+.nav-status{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:var(--dim2);display:flex;align-items:center;gap:7px}
+.dot{width:7px;height:7px;background:var(--acc);box-shadow:0 0 8px var(--acc);animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;padding:64px 40px 48px;border-bottom:1px solid var(--line)}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;margin-bottom:44px}
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+.hero-name{font-family:'Galmuri14','Galmuri11',monospace;font-size:clamp(3.2rem,8vw,7.5rem);font-weight:700;line-height:.96;letter-spacing:0;color:var(--txt)}
+.hero-name .en{display:block;color:var(--acc);text-shadow:0 0 18px var(--acc-glow);margin-top:6px;font-size:.92em}
+.hero-right{max-width:400px;padding-top:6px;display:flex;flex-direction:column;gap:22px}
+.hero-bio{font-size:.78rem;color:var(--dim);line-height:2}
+.hero-bio strong{color:var(--txt)}
+.hero-meta{display:flex;flex-direction:column;gap:7px;border-left:2px solid var(--acc-dim);padding-left:14px}
+.hero-meta-item{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:var(--dim);display:flex;gap:12px}
+.hero-meta-item span:first-child{color:var(--acc);width:62px;flex-shrink:0;text-transform:uppercase}
+.hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-top:28px;border-top:1px solid var(--line2)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);color:var(--dim);transition:.15s}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.hero-awards-mini{display:flex;flex-direction:column;gap:5px;text-align:right}
+.ham-item{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.05em;color:var(--dim2)}
+.ham-item span{color:var(--acc);margin-right:8px}
+
+/* ── SECTION HEADER ── */
+.sec-head{position:relative;z-index:2;display:flex;align-items:center;gap:16px;padding:36px 40px 0}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--acc)}
+.sec-rule{flex:1;height:1px;background:var(--line)}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+/* ── FILTER ── */
+.filter-bar{position:sticky;top:51px;z-index:190;display:flex;align-items:center;flex-wrap:wrap;padding:0 40px;
+  border-bottom:1px solid var(--line);background:rgba(10,11,14,.92);backdrop-filter:blur(6px)}
+.fb{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 16px;border:none;background:transparent;color:var(--dim2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:.15s}
+.fb:hover{color:var(--txt)}
+.fb.on{color:var(--acc);border-bottom-color:var(--acc);text-shadow:0 0 8px var(--acc-glow)}
+.filter-count{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:var(--dim2)}
+
+/* ── GALLERY ── */
+.gallery{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.gal-sec[data-sec="art"] .gallery,.gal-sec[data-sec="2d"] .gallery{grid-template-columns:repeat(3,1fr)}
+
+/* ── SECTION (ALL view groups) ── */
+#grid{padding:30px 40px 6px}
+.gal-sec{margin-bottom:38px}
+.gal-sec:last-child{margin-bottom:0}
+.gal-sec.hide{display:none}
+.sub-head{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+.sub-name{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);text-shadow:0 0 8px var(--acc-glow);white-space:nowrap}
+.sub-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sub-count{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:var(--dim2);white-space:nowrap}
+.sub-soon{color:var(--dim3);font-weight:400;letter-spacing:.14em}
+
+/* ── CARD ── */
+.card{position:relative;overflow:hidden;background:var(--bg);cursor:pointer;aspect-ratio:1/1;border:none;padding:0;display:block}
+.card.wide{grid-column:span 2;aspect-ratio:2/1}
+.card.hide{display:none}
+.c-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .5s cubic-bezier(.16,1,.3,1);filter:saturate(.9)}
+.card:hover .c-bg{transform:scale(1.06);filter:saturate(1.1)}
+.c-rot{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .5s ease;filter:saturate(.9);pointer-events:none}
+/* corner brackets */
+.card::before,.card::after{content:'';position:absolute;width:14px;height:14px;z-index:3;opacity:0;transition:opacity .2s;pointer-events:none}
+.card::before{top:10px;left:10px;border-top:2px solid var(--acc);border-left:2px solid var(--acc)}
+.card::after{bottom:10px;right:10px;border-bottom:2px solid var(--acc);border-right:2px solid var(--acc)}
+.card:hover::before,.card:hover::after{opacity:1}
+.c-hover{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,12,.94) 0%,rgba(8,9,12,.4) 55%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:18px;opacity:0;transition:opacity .25s}
+.card:hover .c-hover{opacity:1}
+.c-tag{font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.c-title{font-family:'Galmuri11',monospace;font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
+.c-desc{font-size:.64rem;color:var(--dim);line-height:1.6}
+.c-play{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;color:var(--acc);margin-top:10px}
+.c-label{position:absolute;bottom:10px;right:10px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:rgba(10,11,14,.7);padding:4px 8px;border:1px solid var(--line);transition:opacity .25s}
+.card:hover .c-label{opacity:0}
+
+/* dark placeholder patterns (no preview yet) */
+.c-bg.pat{position:relative;background:var(--bg2)}
+.c-bg.pat::after{content:'NO PREVIEW';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.18em;color:var(--dim3)}
+.p1{background-image:repeating-linear-gradient(90deg,transparent 0,transparent 26px,rgba(79,240,192,.07) 26px,rgba(79,240,192,.07) 27px)}
+.p2{background-image:repeating-linear-gradient(45deg,transparent 0,transparent 13px,rgba(255,255,255,.04) 13px,rgba(255,255,255,.04) 14px)}
+.p3{background-image:repeating-linear-gradient(0deg,transparent 0,transparent 18px,rgba(255,255,255,.04) 18px,rgba(255,255,255,.04) 19px)}
+.p4{background-image:radial-gradient(circle,rgba(79,240,192,.1) 1px,transparent 1px);background-size:22px 22px}
+.p5{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px}
+.p6{background:radial-gradient(ellipse at 30% 30%,#15181f 0%,#0a0b0e 100%)}
+.p7{background:radial-gradient(ellipse at 70% 70%,#15181f 0%,#0a0b0e 100%)}
+.p8{background-image:repeating-linear-gradient(-45deg,transparent 0,transparent 13px,rgba(255,255,255,.04) 13px,rgba(255,255,255,.04) 14px)}
+.p9{background:#12141a}
+
+/* ── ABOUT ── */
+.about-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.about-col{padding:52px 40px;border-right:1px solid var(--line)}
+.about-col:last-child{border-right:none}
+.col-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:22px;display:block}
+.about-text{font-size:.74rem;color:var(--dim);line-height:2.1;margin-bottom:22px}
+.about-text strong{color:var(--txt)}
+.skills-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+.skill-tag{font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--line);color:var(--dim)}
+.skill-tag:hover{border-color:var(--acc);color:var(--acc)}
+.awards-list{display:flex;flex-direction:column;gap:11px}
+.award-item{display:flex;gap:16px;align-items:baseline}
+.award-year{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--acc);flex-shrink:0;width:34px}
+.award-desc{font-size:.7rem;color:var(--dim);line-height:1.7}
+
+/* ── CONTACT ── */
+#contact{position:relative;z-index:2;text-align:center;padding:90px 40px;border-top:1px solid var(--line)}
+.ct-big{font-family:'Galmuri14','Galmuri11',monospace;font-size:clamp(2.2rem,6vw,5rem);font-weight:700;line-height:1.05;margin-bottom:24px;color:var(--txt)}
+.ct-big .en{display:block;color:var(--acc);text-shadow:0 0 18px var(--acc-glow)}
+.ct-sub{font-size:.72rem;color:var(--dim);margin-bottom:40px;letter-spacing:.04em}
+.btn-mail{display:inline-flex;align-items:center;gap:10px;font-family:'Galmuri11',monospace;font-size:.85rem;font-weight:700;
+  padding:15px 34px;background:var(--acc);color:#06120d;text-decoration:none;border:1px solid var(--acc);transition:.18s;box-shadow:0 0 0 var(--acc-glow)}
+.btn-mail:hover{background:transparent;color:var(--acc);box-shadow:0 0 24px var(--acc-glow)}
+.ct-resume{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);text-decoration:none;border:1px solid var(--line);padding:9px 18px;transition:.15s}
+.ct-resume:hover{color:var(--acc);border-color:var(--acc);box-shadow:0 0 18px var(--acc-glow)}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:2;padding:22px 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between}
+footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim2);letter-spacing:.08em}
+
+/* ── MODAL ── */
+.modal-backdrop{position:fixed;inset:0;z-index:500;background:rgba(5,6,9,.85);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal{position:fixed;inset:0;z-index:600;overflow-y:auto;transform:translateY(28px);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s}
+.modal.open{transform:translateY(0);opacity:1;pointer-events:all}
+.modal-inner{min-height:100vh;background:var(--bg);display:flex;flex-direction:column;border-left:1px solid var(--line);border-right:1px solid var(--line);max-width:1400px;margin:0 auto}
+.modal-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 36px;border-bottom:1px solid var(--line);background:rgba(10,11,14,.95);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10}
+.modal-back,.modal-close{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);background:none;border:none;cursor:pointer;transition:color .15s;padding:0;display:flex;align-items:center;gap:9px}
+.modal-back:hover,.modal-close:hover{color:var(--acc)}
+.modal-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5}
+.modal-header{padding:44px 36px 36px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.modal-title{font-family:'Galmuri14','Galmuri11',monospace;font-size:clamp(1.8rem,4vw,3.6rem);font-weight:700;line-height:1.05;color:var(--txt)}
+.modal-meta{display:flex;flex-direction:column;align-items:flex-end;gap:11px;flex-shrink:0}
+.modal-period{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.modal-cat{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.modal-desc{font-size:.7rem;color:var(--dim);line-height:1.9;text-align:right;max-width:340px}
+.modal-desc .d-ko{display:block}
+.modal-desc .d-en{display:block;margin-top:13px;padding-top:13px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.58rem;line-height:1.85;letter-spacing:.01em;opacity:.55}
+.modal-tools{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+.tool-tag{font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--line);color:var(--dim)}
+.modal-links{display:flex;gap:8px;margin-top:6px}
+.modal-link{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;text-decoration:none;transition:.18s}
+.modal-link.steam{background:var(--acc);color:#06120d;border:1px solid var(--acc)}
+.modal-link.steam:hover{background:transparent;color:var(--acc);box-shadow:0 0 18px var(--acc-glow)}
+.modal-link.yt{border:1px solid var(--line);color:var(--dim)}
+.modal-link.yt:hover{border-color:var(--acc);color:var(--acc)}
+.modal-works{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);flex:1;padding:1px}
+.work-slot{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--bg2);cursor:pointer}
+.work-slot:first-child{grid-column:span 2}
+.work-slot.is-video{grid-column:1/-1;aspect-ratio:16/9;cursor:default}
+.work-slot.is-video iframe{width:100%;height:100%;border:none;display:block}
+.work-slot img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.work-slot.has-img:hover img{transform:scale(1.05)}
+.work-slot.has-img::before{content:'';position:absolute;inset:8px;border:1px solid transparent;z-index:2;pointer-events:none;transition:border-color .2s}
+.work-slot.has-img:hover::before{border-color:var(--acc-dim)}
+.slot-num{position:absolute;bottom:9px;right:11px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:var(--acc);background:rgba(10,11,14,.6);padding:2px 6px}
+
+/* ── LIGHTBOX ── */
+.lb{position:fixed;inset:0;z-index:1000;background:rgba(4,5,7,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s}
+.lb.open{opacity:1;pointer-events:all}
+.lb-img{max-width:92vw;max-height:86vh;object-fit:contain;border:1px solid var(--line);transform:scale(.97);transition:transform .28s cubic-bezier(.16,1,.3,1)}
+.lb.open .lb-img{transform:scale(1)}
+.lb-close{position:absolute;top:18px;right:22px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);background:none;border:none;cursor:pointer;transition:.15s}
+.lb-close:hover{color:var(--acc)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--dim2);font-size:1.3rem;padding:12px 18px;transition:.15s}
+.lb-nav:hover{color:var(--acc)}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-counter{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;color:var(--acc)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav,.hero,#contact,footer{padding-left:20px;padding-right:20px}
+  .sec-head,.filter-bar,.modal-nav,.modal-header,#grid{padding-left:20px;padding-right:20px}
+  .hero-top{flex-direction:column;gap:28px}
+  .hero-right{max-width:100%}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:18px}
+  .hero-awards-mini{text-align:left}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .about-wrap{grid-template-columns:1fr}
+  .about-col{border-right:none;border-bottom:1px solid var(--line);padding:40px 20px}
+  .modal-header{flex-direction:column;align-items:flex-start;gap:22px}
+  .modal-meta{align-items:flex-start}
+  .modal-desc{text-align:left}
+  .modal-tools,.modal-links{justify-content:flex-start}
+  .modal-works{grid-template-columns:repeat(2,1fr)}
+  .work-slot:first-child{grid-column:span 2}
+  footer{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">홍유진<b>_</b></a>
+  <ul class="nav-links">
+    <li><a href="#gallery">WORKS</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+    <!-- ArtStation 계정 만들면 아래 주석을 풀고 URL만 바꾸세요:
+    <li><a href="https://www.artstation.com/계정명" target="_blank" rel="noopener">ARTSTATION ↗</a></li> -->
+    <li><a href="https://instagram.com/owen_5wen" target="_blank" rel="noopener">INSTAGRAM ↗</a></li>
+    <li class="nav-status"><span class="dot"></span>OPEN TO WORK</li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div>
+      <p class="hero-label">▸ 2D GAME ARTIST · CONCEPT — SEOUL, KR</p>
+      <h1 class="hero-name">홍유진<span class="en">GAME ART</span></h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-bio">
+        <strong>게임 원화·컨셉 아티스트.</strong><br>
+        2D 에셋·레벨 디자인과 캐릭터 디자인을 중심으로,
+        3D 시네마틱·모델링과 일러스트까지 폭넓게 다룹니다.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span>School</span><span>한국예술종합학교 (K-Arts)</span></div>
+        <div class="hero-meta-item"><span>Dept</span><span>멀티미디어영상과 4학년</span></div>
+        <div class="hero-meta-item"><span>Email</span><span>Dpang0@naver.com</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-chips">
+      <span class="chip">Concept Art</span>
+      <span class="chip">2D Game Art</span>
+      <span class="chip">Character Design</span>
+      <span class="chip">Asset Design</span>
+      <span class="chip">Level Design</span>
+      <span class="chip">Illustration</span>
+      <span class="chip">3D Cinematic</span>
+      <span class="chip">3D Modeling</span>
+    </div>
+    <div class="hero-awards-mini">
+      <div class="ham-item"><span>2025</span>서울게임타운 전시 선정</div>
+      <div class="ham-item"><span>2025</span>콘텐츠 유니버스 코리아 출품 선정</div>
+      <div class="ham-item"><span>2022</span>장애인식 공모전 웹툰 부문 금상 외 다수</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY SECTION HEADER -->
+<div class="sec-head">
+  <span class="sec-num">// 01</span>
+  <div class="sec-rule"></div>
+  <span class="sec-label">Selected Works</span>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar" id="gallery">
+  <button class="fb on" data-f="all">[ All ]</button>
+  <button class="fb" data-f="game">Games</button>
+  <button class="fb" data-f="3d">3D</button>
+  <button class="fb" data-f="2d">2D</button>
+  <button class="fb" data-f="art">Art</button>
+  <span class="filter-count" id="count">10 works</span>
+</div>
+
+<!-- GALLERY -->
+<div id="grid">
+
+  <section class="gal-sec" data-sec="game">
+    <div class="sub-head"><span class="sub-name">Games</span><span class="sub-line"></span><span class="sub-count">04</span></div>
+    <div class="gallery">
+      <button class="card" data-id="survive" data-c="game 2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/survive.jpg');background-position:center top"></div>
+        <span class="c-label">Game · 2D</span>
+        <div class="c-hover"><p class="c-tag">Game · 2D · Team</p><p class="c-title">We Will Survive</p><p class="c-desc">우주 생존 내러티브 · 서울게임타운 전시</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="mamul1" data-c="game 2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/mamul.jpg')"></div>
+        <span class="c-label">Game · 2D</span>
+        <div class="c-hover"><p class="c-tag">Game · 2D · Solo</p><p class="c-title">Misery Market</p><p class="c-desc">경영 시뮬레이션 · 불행을 파는 마물</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="elem" data-c="game 2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/elem.jpg');background-position:center top"></div>
+        <span class="c-label">Game · 2D</span>
+        <div class="c-hover"><p class="c-tag">Game · 2D</p><p class="c-title">Elementality</p><p class="c-desc">덱빌딩 로그라이크 · 트레일러 제작</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="cinema" data-c="game 3d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/cinema.jpg')"></div>
+        <span class="c-label">Game · 3D</span>
+        <div class="c-hover"><p class="c-tag">Game · 3D · Steam</p><p class="c-title">Silent Reel</p><p class="c-desc">3D 공포 게임 · Steam 무료 출시</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+    </div>
+  </section>
+
+  <section class="gal-sec" data-sec="art">
+    <div class="sub-head"><span class="sub-name">Illustration</span><span class="sub-line"></span><span class="sub-count">03</span></div>
+    <div class="gallery">
+      <button class="card" data-id="illustNoir" data-c="art" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/illust-noir.jpg')"></div>
+        <span class="c-label">Illustration</span>
+        <div class="c-hover"><p class="c-tag">Illustration · Graphic Novel</p><p class="c-title">그래픽 노블</p><p class="c-desc">레드·블랙 · 고대비 · 코믹 패널</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="illustAnime" data-c="art" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/illust-anime.jpg');background-position:center top"></div>
+        <span class="c-label">Illustration</span>
+        <div class="c-hover"><p class="c-tag">Illustration · Anime</p><p class="c-title">애니 / 서브컬쳐</p><p class="c-desc">서브컬쳐 캐릭터 일러스트</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="illustPaint" data-c="art" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/illust-paint.jpg');background-position:center top"></div>
+        <span class="c-label">Illustration</span>
+        <div class="c-hover"><p class="c-tag">Illustration · Painting</p><p class="c-title">반실사</p><p class="c-desc">반실사 캐릭터 · 컨셉 · 디지털 페인팅</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+    </div>
+  </section>
+
+  <section class="gal-sec" data-sec="2d">
+    <div class="sub-head"><span class="sub-name">Animation</span><span class="sub-line"></span><span class="sub-count">03</span></div>
+    <div class="gallery">
+      <button class="card" data-id="bong" data-c="2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/bong.jpg');background-position:center top"></div>
+        <span class="c-label">2D Animation</span>
+        <div class="c-hover"><p class="c-tag">Animation · 2D</p><p class="c-title">봉찜</p><p class="c-desc">After Effects 2D 애니메이션 단편</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="elem" data-c="2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/elem/05.jpg')"></div>
+        <span class="c-label">Cinematic</span>
+        <div class="c-hover"><p class="c-tag">Animation · Cinematic</p><p class="c-title">Elementality</p><p class="c-desc">2D 게임 시네마틱 트레일러 · 연출·편집</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+      <button class="card" data-id="maya" data-c="3d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('https://i.ytimg.com/vi/mx03a1LzNX0/maxresdefault.jpg')"></div>
+        <span class="c-label">3D Cinematic</span>
+        <div class="c-hover"><p class="c-tag">Animation · 3D</p><p class="c-title">마야 쥐</p><p class="c-desc">Maya · Arnold 메카닉 시네마틱</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ABOUT -->
+<div class="sec-head" style="margin-top:0">
+  <span class="sec-num">// 02</span>
+  <div class="sec-rule"></div>
+  <span class="sec-label">About</span>
+</div>
+<div class="about-wrap" id="about">
+  <div class="about-col">
+    <span class="col-label">▸ Profile</span>
+    <p class="about-text">
+      <strong>홍유진 · Hong Yujin</strong><br>
+      게임 한 편의 아트를 처음부터 끝까지 책임지는 작업을 좋아합니다. 솔로 프로젝트부터 6인 팀까지, 컨셉·캐릭터·UI·이펙트의 아트 디렉션과 실제 제작을 두루 맡아 왔습니다.
+    </p>
+    <p class="about-text">
+      <strong>Education</strong><br>
+      한국예술종합학교 (K-Arts) 멀티미디어영상과 4학년<br>
+      온양여자고등학교 졸업
+    </p>
+    <p class="col-label" style="margin-top:28px">▸ Skills</p>
+    <div class="skills-row">
+      <span class="skill-tag">Clip Studio Paint</span><span class="skill-tag">Photoshop</span>
+      <span class="skill-tag">After Effects</span><span class="skill-tag">Premiere Pro</span>
+      <span class="skill-tag">Maya</span><span class="skill-tag">Arnold</span>
+      <span class="skill-tag">Cinema 4D</span><span class="skill-tag">Octane</span>
+      <span class="skill-tag">ZBrush</span><span class="skill-tag">Substance Painter</span>
+      <span class="skill-tag">Unity</span>
+    </div>
+  </div>
+  <div class="about-col">
+    <span class="col-label">▸ Awards &amp; Exhibition</span>
+    <div class="awards-list">
+      <div class="award-item"><span class="award-year">2025</span><span class="award-desc">서울게임타운 전시 선정 (Silent Reel, We Will Survive)</span></div>
+      <div class="award-item"><span class="award-year">2025</span><span class="award-desc">콘텐츠 유니버스 코리아 출품 선정 (We Will Survive)</span></div>
+      <div class="award-item"><span class="award-year">2024</span><span class="award-desc">봉추찜닭 광고 공모전 장려상</span></div>
+      <div class="award-item"><span class="award-year">2022</span><span class="award-desc">질병관리청 코로나19 방역 일러스트 공모전 은상</span></div>
+      <div class="award-item"><span class="award-year">2022</span><span class="award-desc">장애인식 공모전 웹툰 부문 금상</span></div>
+      <div class="award-item"><span class="award-year">2022</span><span class="award-desc">전기사랑 미디어콘텐츠대전 장려상</span></div>
+      <div class="award-item"><span class="award-year">2020</span><span class="award-desc">보훈문예물 콘텐츠 공모전 디자인 부문 금상</span></div>
+      <div class="award-item"><span class="award-year">2020</span><span class="award-desc">광주 ACC 민주인권평화 공모전 웹툰 부문 장려상</span></div>
+      <div class="award-item"><span class="award-year">2018</span><span class="award-desc">보훈문예물 콘텐츠 공모전 디자인 부문 금상</span></div>
+      <div class="award-item"><span class="award-year">2017</span><span class="award-desc">좀비고등학교 불새문화제 일러스트 부문 동상</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head" style="margin-bottom:54px;padding:0">
+    <span class="sec-num">// 03</span>
+    <div class="sec-rule"></div>
+    <span class="sec-label">Contact</span>
+  </div>
+  <h2 class="ct-big">같이 만들어요<span class="en">PRESS START</span></h2>
+  <p class="ct-sub">채용 문의, 협업, 프리랜서 모두 환영합니다.</p>
+  <div style="display:flex;flex-direction:column;gap:14px;align-items:center">
+    <a href="mailto:Dpang0@naver.com" class="btn-mail">Dpang0@naver.com →</a>
+    <a href="assets/홍유진_포트폴리오.pdf" download class="ct-resume">▼ Resume / Portfolio PDF</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 — 홍유진 · HONG YUJIN</p>
+  <p>SEOUL, KR · GAME ARTIST</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="backdrop" onclick="closeModal()"></div>
+<div class="modal" id="modal" role="dialog">
+  <div class="modal-inner">
+    <div class="modal-nav">
+      <button class="modal-back" onclick="closeModal()">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        ALL WORKS
+      </button>
+      <button class="modal-close" onclick="closeModal()">[ ESC ] CLOSE</button>
+    </div>
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-title">—</h2>
+      <div class="modal-meta">
+        <span class="modal-period" id="modal-period"></span>
+        <span class="modal-cat" id="modal-cat">—</span>
+        <p class="modal-desc" id="modal-desc">—</p>
+        <div class="modal-tools" id="modal-tools"></div>
+        <div class="modal-links" id="modal-links"></div>
+      </div>
+    </div>
+    <div class="modal-works" id="modal-works"></div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">[ ESC ] CLOSE</button>
+  <button class="lb-nav lb-prev" onclick="lbMove(-1)">&#8592;</button>
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbMove(1)">&#8594;</button>
+  <span class="lb-counter" id="lb-counter"></span>
+</div>
+
+<script>
+const PROJECTS = {
+  cinema: {
+    title:'Silent Reel', cat:'Game · 3D · Free to Play', period:'Mar – May 2025',
+    desc:'텅 빈 영화관을 배경으로 한 3D 공포 게임. 상영관 사이의 이상 현상을 관찰해 변화가 없으면 전진, 있으면 후퇴하며 0~8번 상영관을 빠져나간다. 전체 3D 아트 디렉션과 비주얼 구현을 담당한 Unity 팀 프로젝트.',
+    descEn:'A 3D horror game set in an empty cinema. Detect anomalies between halls — move forward if unchanged, backward if changed. Navigate Screens 0-8. Overall 3D art direction and visual implementation. Unity team project.',
+    tools:['Unity','Maya','Substance Painter','Photoshop'],
+    links:[{label:'Steam',cls:'steam',url:'https://store.steampowered.com/app/3799310/Silent_Reel/'},{label:'Gameplay',cls:'yt',url:'https://www.youtube.com/watch?v=AkbJ_Z-jL-o'}],
+    video:'https://www.youtube.com/embed/AkbJ_Z-jL-o?rel=0',
+    images:['assets/img/cinema/01.jpg','assets/img/cinema/02.jpg','assets/img/cinema/03.jpg','assets/img/cinema/04.jpg','assets/img/cinema/05.jpg','https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3799310/b06c38c90003704856ce8abe460a130e5e6e10e3/ss_b06c38c90003704856ce8abe460a130e5e6e10e3.1920x1080.jpg?t=1752655807','assets/img/cinema/06.jpg','assets/img/cinema/07.jpg','assets/img/cinema/08.jpg']
+  },
+  elem: {
+    title:'Elementality', cat:'Game · 2D', period:'Jan - Mar 2026 · Dev. Discontinued',
+    desc:'2D 턴제 덱빌딩 로그라이크. 속성 상성과 시너지를 활용하는 그리드 기반 전술 전투를 다룬다. 비주얼 컨셉·캐릭터 디자인·UI·이펙트 등 전체 2D 아트를 담당했고 트레일러를 직접 제작했다.',
+    descEn:'A 2D turn-based deck-building roguelike. Grid-based tactical combat with elemental affinities and synergy building. Handled overall 2D art — visual concept, character design, UI, effects. Trailer self-produced.',
+    tools:['Unity','Clip Studio Paint','After Effects'],
+    links:[{label:'Trailer',cls:'steam',url:'https://youtu.be/cc7ulhFwLnI'}],
+    video:'https://www.youtube.com/embed/cc7ulhFwLnI?rel=0',
+    images:['assets/img/elem/01.jpg','assets/img/elem/02.jpg','assets/img/elem/03.jpg','assets/img/elem/04.jpg','assets/img/elem/05.jpg']
+  },
+  mamul1: {
+    title:'Misery Market', cat:'Game · 2D · Solo', period:'Jun - Sep 2025 · Prototype',
+    desc:'고객에게 불행을 파는 마물이 되어 가게를 운영하는 경영 시뮬레이션. 블랙코미디와 윤리적 딜레마가 핵심이다. 게임 디자인·세계관·캐릭터 디자인·UI 등 모든 2D 아트를 맡은 솔로 프로젝트.',
+    descEn:'Management sim where you play as a demon selling misfortune to customers. Black comedy and ethical dilemmas. Solo project — game design, worldbuilding, character design, UI, all 2D art.',
+    tools:['Unity','Clip Studio Paint'],
+    links:[],
+    images:['assets/img/mamul/01.jpg','assets/img/mamul/02.jpg','assets/img/mamul/03.jpg','assets/img/mamul/04.jpg','assets/img/mamul/05.jpg','assets/img/mamul/06.jpg']
+  },
+  survive: {
+    title:'We Will Survive', cat:'Game · 2D · Team of 6', period:'Jun - Oct 2025',
+    desc:'우주를 표류하는 내러티브 생존 게임. 부족한 자원을 관리하며 승무원들의 사연을 풀어간다. 캐릭터 디자인·UI·일러스트 등 2D 에셋 전반의 아트 디렉션을 담당했다. 2025 콘텐츠 유니버스 코리아·서울게임타운 전시 선정작.',
+    descEn:'Narrative survival game set adrift in space. Manage scarce resources and uncover crew backstories. Art directed all 2D assets — character design, UI, illustration. Selected for 2025 Content Universe Korea and Seoul Game Town Exhibition.',
+    tools:['Unity','Clip Studio Paint'],
+    links:[],
+    images:['assets/img/survive/01.jpg','assets/img/survive/02.jpg','assets/img/survive/03.jpg','assets/img/survive/04.jpg','assets/img/survive/05.jpg','assets/img/survive/06.jpg','assets/img/survive/07.jpg','assets/img/survive/08.jpg','assets/img/survive/09.jpg','assets/img/survive/10.jpg']
+  },
+  bong:  {title:'봉찜',  cat:'2D Animation', desc:'봉추찜닭 광고 공모전 출품작. After Effects 기반 2D 캐릭터 애니메이션 단편. 2024 봉추찜닭 광고 공모전 장려상.',tools:['After Effects','Illustrator'],images:['assets/img/bong/bong-01.png']},
+  maya:  {title:'마야 쥐',cat:'Animation · 3D · Maya',
+    desc:'거친 산업 폐허를 무대로 한 메카닉 캐릭터의 3D 시네마틱. Maya로 리깅과 카메라·애니메이션을 짜고, Arnold 렌더링과 Substance Painter 텍스처로 묵직한 금속 질감과 마모감을 살렸다.',
+    descEn:'A 3D cinematic of a mechanical character staged in gritty industrial ruins. Rigged, shot and animated in Maya — rendered with Arnold and textured in Substance Painter for heavy, worn metal.',
+    tools:['Maya','Arnold','Substance Painter'],
+    links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=mx03a1LzNX0'}],
+    video:'https://www.youtube.com/embed/mx03a1LzNX0?rel=0',images:[]},
+  c4d:   {title:'시포디', cat:'Animation · 3D · Cinema 4D',
+    desc:'화물을 짊어진 바퀴 달린 배달 로봇이 도시를 누비는 스타일라이즈 3D 모션 단편. Cinema 4D로 캐릭터 셋업과 애니메이션을 구성하고 Octane으로 라이팅·질감을, Substance Painter로 디테일을 입혔다.',
+    descEn:'A stylized 3D motion piece — a wheeled delivery bot hauling its cargo through the city. Set up and animated in Cinema 4D, lit and rendered in Octane, detailed in Substance Painter.',
+    tools:['Cinema 4D','Octane','Substance Painter'],
+    links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=ZcVD7h4LhxQ'}],
+    video:'https://www.youtube.com/embed/ZcVD7h4LhxQ?rel=0',images:[]},
+  ue5:   {title:'언리얼 RED / 9',cat:'UE5 Cinematic',desc:'Unreal Engine 5 리얼타임 렌더링 시네마틱.',tools:['Unreal Engine 5','RED Camera','Maya'],images:[]},
+  model: {title:'스타일라이즈 모델링',cat:'3D Modeling',desc:'애니메이션 시네마틱용 스타일라이즈 3D 캐릭터 모델링.',tools:['Maya','ZBrush','Substance Painter'],images:[]},
+  illustPaint:{title:'반실사',cat:'Illustration · Digital Painting',
+    desc:'반실사 톤의 캐릭터 페인팅과 컨셉 일러스트 모음.',
+    descEn:'Semi-realistic character paintings and concept illustrations.',
+    tools:['Clip Studio Paint','Photoshop','Procreate'],
+    images:['assets/img/illust/painterly/painterly-11.jpg','assets/img/illust/painterly/painterly-05.png','assets/img/illust/painterly/painterly-08.jpg','assets/img/illust/painterly/painterly-02.png','assets/img/illust/painterly/painterly-07.jpg','assets/img/illust/painterly/painterly-01.jpg']},
+  illustAnime:{title:'애니 / 서브컬쳐',cat:'Illustration · Anime',
+    desc:'서브컬쳐 스타일 캐릭터 일러스트 모음.',
+    descEn:'Subculture-style character illustrations.',
+    tools:['Clip Studio Paint','Photoshop'],
+    images:['assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-01.png','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg']},
+  illustNoir:{title:'그래픽 노블',cat:'Illustration · Graphic Novel',
+    desc:'레드·블랙 고대비 그래픽과 코믹 패널 연출의 드라마틱한 일러스트 모음.',
+    descEn:'Dramatic high-contrast red-black graphics with comic-panel staging.',
+    tools:['Clip Studio Paint','Photoshop'],
+    images:['assets/img/illust/noir/noir-01.jpg','assets/img/illust/noir/noir-02.jpg','assets/img/illust/noir/noir-03.jpg','assets/img/illust/noir/noir-06.jpg']}
+};
+
+const backdrop=document.getElementById('backdrop'),modal=document.getElementById('modal');
+const mTitle=document.getElementById('modal-title'),mPeriod=document.getElementById('modal-period');
+const mCat=document.getElementById('modal-cat'),mDesc=document.getElementById('modal-desc');
+const mTools=document.getElementById('modal-tools'),mLinks=document.getElementById('modal-links');
+const mWorks=document.getElementById('modal-works');
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbCounter=document.getElementById('lb-counter');
+let lbSrcs=[],lbIdx=0;
+function openLb(srcs,i){lbSrcs=srcs;lbIdx=i;lbImg.src=srcs[i];lbCounter.textContent=String(i+1).padStart(2,'0')+' / '+String(srcs.length).padStart(2,'0');lb.classList.add('open');}
+function closeLb(){lb.classList.remove('open');lbImg.src='';}
+function lbMove(d){if(!lbSrcs.length)return;lbIdx=(lbIdx+d+lbSrcs.length)%lbSrcs.length;lbImg.src=lbSrcs[lbIdx];lbCounter.textContent=String(lbIdx+1).padStart(2,'0')+' / '+String(lbSrcs.length).padStart(2,'0');}
+function lbOpenFromSlot(slot){var all=mWorks.querySelectorAll('.work-slot.has-img'),srcs=Array.from(all).map(function(s){return s.querySelector('img').src;}),idx=Array.from(all).indexOf(slot);openLb(srcs,idx>=0?idx:0);}
+lb.onclick=function(e){if(e.target===lb)closeLb();};
+
+function openModal(id){
+  var p=PROJECTS[id];if(!p)return;
+  mTitle.textContent=p.title||'';mPeriod.textContent=p.period||'';mCat.textContent=p.cat||'';
+  mDesc.innerHTML=(p.desc?'<span class="d-ko">'+p.desc+'</span>':'')+(p.descEn?'<span class="d-en">'+p.descEn+'</span>':'');
+  mTools.innerHTML=(p.tools||[]).map(function(t){return '<span class="tool-tag">'+t+'</span>';}).join('');
+  mLinks.innerHTML=(p.links||[]).map(function(l){return '<a class="modal-link '+l.cls+'" href="'+l.url+'" target="_blank" rel="noopener">'+l.label+'</a>';}).join('');
+  var h='';
+  if(p.video){var ytId=p.video.replace('https://www.youtube.com/embed/','').split('?')[0],ytUrl='https://www.youtube.com/watch?v='+ytId,ytThumb='https://i.ytimg.com/vi/'+ytId+'/maxresdefault.jpg';h+='<div class="work-slot is-video yt-slot" onclick="window.open(\''+ytUrl+'\',\'_blank\')" style="cursor:pointer"><img src="'+ytThumb+'" style="width:100%;height:100%;object-fit:cover;opacity:.7" onerror="this.style.opacity=0"/><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><svg width=52 height=52 viewBox="0 0 24 24" style="fill:var(--acc)"><path d="M8 5v14l11-7z"/></svg><span style="font-family:monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">▶ WATCH ON YOUTUBE</span></div></div>';}
+  var imgs=p.images||[];
+  if(!imgs.length && !p.video){h+='<div class="work-slot" style="grid-column:1/-1;aspect-ratio:16/6;cursor:default"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(233,231,224,.25)">⚠ WORK IN PROGRESS — 이미지 준비중</div></div>';}
+  imgs.forEach(function(src,i){h+='<div class="work-slot has-img" onclick="lbOpenFromSlot(this)"><img src="'+src+'" loading="lazy" alt=""/><span class="slot-num">'+String(i+1).padStart(2,'0')+'</span></div>';});
+  mWorks.innerHTML=h;
+  backdrop.classList.add('open');modal.classList.add('open');document.body.classList.add('locked');modal.scrollTop=0;
+}
+function closeModal(){backdrop.classList.remove('open');modal.classList.remove('open');document.body.classList.remove('locked');}
+document.addEventListener('keydown',function(e){if(lb.classList.contains('open')){if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='ArrowRight')lbMove(1);}else{if(e.key==='Escape')closeModal();}});
+
+var allCards=document.querySelectorAll('.card'),allSecs=document.querySelectorAll('.gal-sec'),countEl=document.getElementById('count');
+countEl.textContent=allCards.length+' works';
+function applyFilter(f){
+  var v=0;
+  allSecs.forEach(function(sec){
+    var shown=0;
+    sec.querySelectorAll('.card').forEach(function(c){
+      var show=f==='all'||c.dataset.c.indexOf(f)>-1;
+      c.classList.toggle('hide',!show);
+      if(show){shown++;v++;}
+    });
+    sec.classList.toggle('hide',shown===0);
+    var cnt=sec.querySelector('.sub-count');
+    if(cnt)cnt.firstChild&&(cnt.childNodes[0].nodeValue=String(shown).padStart(2,'0'));
+  });
+  countEl.textContent=v+' works';
+}
+document.querySelectorAll('.fb').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');applyFilter(btn.dataset.f);});});
+applyFilter('all');
+
+/* ── hover-to-cycle card preview (in order) ── */
+(function(){
+  allCards.forEach(function(card){
+    var p=PROJECTS[card.dataset.id];
+    if(!p||!p.images||p.images.length<2)return;
+    var base=card.querySelector('.c-bg');
+    if(!base||base.classList.contains('pat'))return;
+    var thumb=(base.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/)||[])[1];
+    var pool=(thumb?[thumb]:[]).concat(p.images);
+    var rot=document.createElement('div');rot.className='c-rot';base.parentNode.insertBefore(rot,base.nextSibling);
+    var idx=0,timer=null,hovering=false;
+    function show(i){
+      var next=pool[i],pre=new Image();
+      pre.onload=function(){
+        if(!hovering)return;
+        rot.style.backgroundImage="url('"+next+"')";rot.style.opacity='1';
+        setTimeout(function(){if(!hovering)return;base.style.backgroundImage="url('"+next+"')";rot.style.opacity='0';},480);
+      };
+      pre.src=next;
+    }
+    card.addEventListener('mouseenter',function(){
+      hovering=true;if(timer)return;
+      timer=setInterval(function(){idx=(idx+1)%pool.length;show(idx);},1300);
+    });
+    card.addEventListener('mouseleave',function(){
+      hovering=false;if(timer){clearInterval(timer);timer=null;}
+      idx=0;rot.style.opacity='0';base.style.backgroundImage="url('"+pool[0]+"')";
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.DS_Store
+.claude/
+*.log
+
+# 포트폴리오에 쓰지 않는 보류 이미지(그림 아님)
+assets/img/_review/
+
+# 원본 묶음 백업 (배포물 아님)
+assets/MYBOX.zip
