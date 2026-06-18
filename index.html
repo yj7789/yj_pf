@@ -120,6 +120,9 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 /* ── CARD ── */
 .card{position:relative;overflow:hidden;background:var(--bg);cursor:pointer;aspect-ratio:1/1;border:none;padding:0;display:block}
 .card.wide{grid-column:span 2;aspect-ratio:2/1}
+.card.feature{grid-column:1/-1;aspect-ratio:16/5}
+.card.feature .c-label{font-size:.56rem}
+@media(max-width:680px){.card.feature{aspect-ratio:16/7}}
 .card.hide{display:none}
 .c-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .5s cubic-bezier(.16,1,.3,1);filter:saturate(.9)}
 .card:hover .c-bg{transform:scale(1.06);filter:saturate(1.1)}
@@ -329,8 +332,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
 <div id="grid">
 
   <section class="gal-sec" data-sec="game">
-    <div class="sub-head"><span class="sub-name">Games</span><span class="sub-line"></span><span class="sub-count">04</span></div>
+    <div class="sub-head"><span class="sub-name">Games</span><span class="sub-line"></span><span class="sub-count">05</span></div>
     <div class="gallery">
+      <button class="card feature" data-id="playnowz" data-c="game 2d" onclick="openModal(this.dataset.id)">
+        <div class="c-bg" style="background-image:url('assets/img/thumb/playnowz.jpg')"></div>
+        <span class="c-label">Web Game · 2D</span>
+        <div class="c-hover"><p class="c-tag">Web Game · 2D · Visual Novel</p><p class="c-title">PLAY NOWZ</p><p class="c-desc">야구 테마 웹 비주얼노벨 · 타이틀·UI·연출</p><p class="c-play">▶ VIEW PROJECT</p></div>
+      </button>
       <button class="card" data-id="survive" data-c="game 2d" onclick="openModal(this.dataset.id)">
         <div class="c-bg" style="background-image:url('assets/img/thumb/survive.jpg');background-position:center top"></div>
         <span class="c-label">Game · 2D</span>
@@ -499,6 +507,15 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
 
 <script>
 const PROJECTS = {
+  playnowz: {
+    title:'PLAY NOWZ', cat:'Web Game · 2D · Visual Novel', period:'2025 · Web Game',
+    desc:'브라우저에서 즐기는 야구 테마 비주얼노벨 웹게임. 야구단의 임시 코치가 되어 선수들과 교류하는 스토리로, 타이틀 화면·인게임 UI·연출 등 2D 비주얼을 작업했다.',
+    descEn:'A baseball-themed visual-novel web game playable in the browser. You become the temporary coach of a team and bond with the players — worked on the 2D visuals including the title screen, in-game UI and staging.',
+    tools:['Photoshop','Clip Studio Paint'],
+    links:[{label:'Watch',cls:'yt',url:'https://youtu.be/m-IyeBQZD6Q'}],
+    video:'https://www.youtube.com/embed/m-IyeBQZD6Q?rel=0',
+    images:['assets/img/playnowz/playnowz-01.jpg','assets/img/playnowz/playnowz-02.jpg']
+  },
   cinema: {
     title:'Silent Reel', cat:'Game · 3D · Free to Play', period:'Mar – May 2025',
     desc:'텅 빈 영화관을 배경으로 한 3D 공포 게임. 상영관 사이의 이상 현상을 관찰해 변화가 없으면 전진, 있으면 후퇴하며 0~8번 상영관을 빠져나간다. 전체 3D 아트 디렉션과 비주얼 구현을 담당한 Unity 팀 프로젝트.',
