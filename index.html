@@ -393,13 +393,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
       </button>
       <button class="card" data-id="elem" data-c="2d" onclick="openModal(this.dataset.id)">
         <div class="c-bg" style="background-image:url('assets/img/elem/05.jpg')"></div>
-        <span class="c-label">Cinematic</span>
-        <div class="c-hover"><p class="c-tag">Animation · Cinematic</p><p class="c-title">Elementality</p><p class="c-desc">2D 게임 시네마틱 트레일러 · 연출·편집</p><p class="c-play">▶ VIEW PROJECT</p></div>
+        <span class="c-label">2D Trailer</span>
+        <div class="c-hover"><p class="c-tag">Animation · 2D Trailer</p><p class="c-title">Elementality</p><p class="c-desc">2D 게임 트레일러 · 연출·편집</p><p class="c-play">▶ VIEW PROJECT</p></div>
       </button>
       <button class="card" data-id="maya" data-c="3d" onclick="openModal(this.dataset.id)">
-        <div class="c-bg" style="background-image:url('https://i.ytimg.com/vi/mx03a1LzNX0/maxresdefault.jpg')"></div>
+        <div class="c-bg" style="background-image:url('assets/img/maya/maya-01.jpg')"></div>
         <span class="c-label">3D</span>
-        <div class="c-hover"><p class="c-tag">3D · Maya · Arnold</p><p class="c-title">3D</p><p class="c-desc">Maya·Arnold 3D 시네마틱 (보조 역량)</p><p class="c-play">▶ VIEW PROJECT</p></div>
+        <div class="c-hover"><p class="c-tag">3D · Modeling · Cinematic</p><p class="c-title">3D</p><p class="c-desc">모델링·시네마틱 (보조 역량)</p><p class="c-play">▶ VIEW PROJECT</p></div>
       </button>
     </div>
   </section>
@@ -549,7 +549,7 @@ const PROJECTS = {
     descEn:'Narrative survival game set adrift in space. Manage scarce resources and uncover crew backstories. Art directed all 2D assets — character design, UI, illustration. Selected for 2025 Content Universe Korea and Seoul Game Town Exhibition.',
     tools:['Unity','Clip Studio Paint'],
     links:[],
-    images:['assets/img/survive/11.png','assets/img/survive/01.jpg','assets/img/survive/02.jpg','assets/img/survive/03.jpg','assets/img/survive/04.jpg','assets/img/survive/05.jpg','assets/img/survive/06.jpg','assets/img/survive/07.jpg','assets/img/survive/08.jpg','assets/img/survive/09.jpg','assets/img/survive/10.jpg','assets/img/survive/12.png','assets/img/survive/13.png']
+    images:['assets/img/survive/11.png','assets/img/survive/01.jpg','assets/img/survive/02.jpg','assets/img/survive/03.jpg','assets/img/survive/04.jpg','assets/img/survive/05.jpg','assets/img/survive/06.jpg','assets/img/survive/07.jpg','assets/img/survive/08.jpg','assets/img/survive/09.jpg','assets/img/survive/10.jpg']
   },
   bong:  {title:'봉추찜닭',  cat:'Animation · 2D · Ad', period:'2024 · 광고 공모전',
     desc:'봉추찜닭 브랜드 광고 공모전 출품작. 브랜드 캐릭터를 살려 기획·디자인·애니메이션을 직접 맡은 2D 모션 광고 단편으로, Illustrator로 캐릭터와 에셋을 그리고 After Effects로 연출·합성·타이밍을 잡았다. 2024 봉추찜닭 광고 공모전 장려상 수상작.',
@@ -558,12 +558,14 @@ const PROJECTS = {
     links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=492fwP5KLtU'}],
     video:'https://www.youtube.com/embed/492fwP5KLtU?rel=0',
     images:['assets/img/bong/bong-01.png','assets/img/bong/bong-02.png','assets/img/bong/bong-03.png','assets/img/bong/bong-04.png','assets/img/bong/bong-05.png','assets/img/bong/bong-06.png','assets/img/bong/bong-07.png']},
-  maya:  {title:'3D',cat:'3D · Maya · Arnold (보조 역량)',
-    desc:'거친 산업 폐허를 무대로 한 메카닉 캐릭터의 3D 시네마틱. Maya로 리깅과 카메라·애니메이션을 짜고, Arnold 렌더링과 Substance Painter 텍스처로 묵직한 금속 질감과 마모감을 살렸다.',
-    descEn:'A 3D cinematic of a mechanical character staged in gritty industrial ruins. Rigged, shot and animated in Maya — rendered with Arnold and textured in Substance Painter for heavy, worn metal.',
-    tools:['Maya','Arnold','Substance Painter'],
-    links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=mx03a1LzNX0'}],
-    video:'https://www.youtube.com/embed/mx03a1LzNX0?rel=0',images:[]},
+  maya:  {title:'3D',cat:'3D · Modeling · Cinematic (보조 역량)',
+    desc:'2D 작업을 보조하는 3D 역량. 스타일라이즈 캐릭터를 모델링·리깅하고(Maya·ZBrush·Substance Painter), 메카닉 시네마틱과 모션 단편을 Maya·Arnold / Cinema 4D·Octane로 연출했다.',
+    descEn:'3D as a supporting skill alongside 2D work. Stylized character modeling and rigging (Maya · ZBrush · Substance Painter), plus mechanical cinematics and motion shorts staged in Maya · Arnold / Cinema 4D · Octane.',
+    tools:['Maya','Cinema 4D','Arnold','Octane','ZBrush','Substance Painter'],
+    links:[{label:'Watch',cls:'yt',url:'https://youtu.be/ZcVD7h4LhxQ'}],
+    video:'https://www.youtube.com/embed/ZcVD7h4LhxQ?rel=0',
+    extraVideos:['mx03a1LzNX0','hMSISc33rzo'],
+    images:['assets/img/maya/maya-01.jpg','assets/img/maya/maya-02.jpg','assets/img/maya/maya-03.jpg','assets/img/maya/maya-04.jpg','assets/img/maya/maya-05.jpg','assets/img/maya/maya-06.jpg']},
   illustPaint:{title:'반실사',cat:'Illustration · Digital Painting',
     desc:'반실사 톤의 캐릭터 페인팅과 컨셉 일러스트 모음.',
     descEn:'Semi-realistic character paintings and concept illustrations.',
@@ -602,6 +604,7 @@ function openModal(id){
   mLinks.innerHTML=(p.links||[]).map(function(l){return '<a class="modal-link '+l.cls+'" href="'+l.url+'" target="_blank" rel="noopener">'+l.label+'</a>';}).join('');
   var h='';
   if(p.video){var ytId=p.video.replace('https://www.youtube.com/embed/','').split('?')[0],ytUrl='https://www.youtube.com/watch?v='+ytId,ytThumb='https://i.ytimg.com/vi/'+ytId+'/maxresdefault.jpg',slotUrl=p.playUrl||ytUrl,slotLabel=p.playUrl?'▶ PLAY NOW':'▶ WATCH ON YOUTUBE';h+='<div class="work-slot is-video yt-slot" onclick="window.open(\''+slotUrl+'\',\'_blank\')" style="cursor:pointer"><img src="'+ytThumb+'" style="width:100%;height:100%;object-fit:cover;opacity:.7" onerror="this.style.opacity=0"/><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><svg width=52 height=52 viewBox="0 0 24 24" style="fill:var(--acc)"><path d="M8 5v14l11-7z"/></svg><span style="font-family:monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">'+slotLabel+'</span></div></div>';}
+  (p.extraVideos||[]).forEach(function(vid){var vUrl='https://www.youtube.com/watch?v='+vid;h+='<div class="work-slot has-img" onclick="window.open(\''+vUrl+'\',\'_blank\')" style="cursor:pointer"><img src="https://i.ytimg.com/vi/'+vid+'/maxresdefault.jpg" loading="lazy" style="opacity:.85" onerror="this.src=\'https://i.ytimg.com/vi/'+vid+'/hqdefault.jpg\'"/><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><svg width=38 height=38 viewBox="0 0 24 24" style="fill:var(--acc);filter:drop-shadow(0 0 6px rgba(0,0,0,.6))"><path d="M8 5v14l11-7z"/></svg></div></div>';});
   var imgs=p.images||[];
   if(!imgs.length && !p.video){h+='<div class="work-slot" style="grid-column:1/-1;aspect-ratio:16/6;cursor:default"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(233,231,224,.25)">⚠ WORK IN PROGRESS — 이미지 준비중</div></div>';}
   imgs.forEach(function(src,i){h+='<div class="work-slot has-img" onclick="lbOpenFromSlot(this)"><img src="'+src+'" loading="lazy" alt=""/><span class="slot-num">'+String(i+1).padStart(2,'0')+'</span></div>';});
