@@ -281,9 +281,9 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
     </div>
     <div class="hero-right">
       <p class="hero-bio">
-        <strong>게임 원화·컨셉 아티스트.</strong><br>
-        2D 에셋·레벨 디자인과 캐릭터 디자인을 중심으로,
-        3D 시네마틱·모델링과 일러스트까지 폭넓게 다룹니다.
+        <strong>2D 게임 원화·컨셉 아티스트.</strong><br>
+        캐릭터 디자인과 컨셉·2D 에셋·일러스트를 중심으로 작업하며,
+        3D 시네마틱은 보조 역량으로 다룹니다.
       </p>
       <div class="hero-meta">
         <div class="hero-meta-item"><span>School</span><span>한국예술종합학교 (K-Arts)</span></div>
@@ -295,13 +295,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
   <div class="hero-bottom">
     <div class="hero-chips">
       <span class="chip">Concept Art</span>
-      <span class="chip">2D Game Art</span>
       <span class="chip">Character Design</span>
+      <span class="chip">2D Game Art</span>
       <span class="chip">Asset Design</span>
       <span class="chip">Level Design</span>
       <span class="chip">Illustration</span>
+      <span class="chip">UI</span>
       <span class="chip">3D Cinematic</span>
-      <span class="chip">3D Modeling</span>
     </div>
     <div class="hero-awards-mini">
       <div class="ham-item"><span>2025</span>서울게임타운 전시 선정</div>
@@ -398,8 +398,8 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
       </button>
       <button class="card" data-id="maya" data-c="3d" onclick="openModal(this.dataset.id)">
         <div class="c-bg" style="background-image:url('https://i.ytimg.com/vi/mx03a1LzNX0/maxresdefault.jpg')"></div>
-        <span class="c-label">3D Cinematic</span>
-        <div class="c-hover"><p class="c-tag">Animation · 3D</p><p class="c-title">마야 쥐</p><p class="c-desc">Maya · Arnold 메카닉 시네마틱</p><p class="c-play">▶ VIEW PROJECT</p></div>
+        <span class="c-label">3D</span>
+        <div class="c-hover"><p class="c-tag">3D · Maya · Arnold</p><p class="c-title">3D</p><p class="c-desc">Maya·Arnold 3D 시네마틱 (보조 역량)</p><p class="c-play">▶ VIEW PROJECT</p></div>
       </button>
     </div>
   </section>
@@ -428,10 +428,10 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
     <div class="skills-row">
       <span class="skill-tag">Clip Studio Paint</span><span class="skill-tag">Photoshop</span>
       <span class="skill-tag">After Effects</span><span class="skill-tag">Premiere Pro</span>
-      <span class="skill-tag">Maya</span><span class="skill-tag">Arnold</span>
-      <span class="skill-tag">Cinema 4D</span><span class="skill-tag">Octane</span>
-      <span class="skill-tag">ZBrush</span><span class="skill-tag">Substance Painter</span>
       <span class="skill-tag">Unity</span>
+      <span class="skill-tag" style="opacity:.6">Maya</span><span class="skill-tag" style="opacity:.6">Arnold</span>
+      <span class="skill-tag" style="opacity:.6">ZBrush</span><span class="skill-tag" style="opacity:.6">Substance Painter</span>
+      <span class="skill-tag" style="opacity:.6">Cinema 4D</span><span class="skill-tag" style="opacity:.6">Octane</span>
     </div>
   </div>
   <div class="about-col">
@@ -558,20 +558,12 @@ const PROJECTS = {
     links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=492fwP5KLtU'}],
     video:'https://www.youtube.com/embed/492fwP5KLtU?rel=0',
     images:['assets/img/bong/bong-01.png','assets/img/bong/bong-02.png','assets/img/bong/bong-03.png','assets/img/bong/bong-04.png','assets/img/bong/bong-05.png','assets/img/bong/bong-06.png','assets/img/bong/bong-07.png']},
-  maya:  {title:'마야 쥐',cat:'Animation · 3D · Maya',
+  maya:  {title:'3D',cat:'3D · Maya · Arnold (보조 역량)',
     desc:'거친 산업 폐허를 무대로 한 메카닉 캐릭터의 3D 시네마틱. Maya로 리깅과 카메라·애니메이션을 짜고, Arnold 렌더링과 Substance Painter 텍스처로 묵직한 금속 질감과 마모감을 살렸다.',
     descEn:'A 3D cinematic of a mechanical character staged in gritty industrial ruins. Rigged, shot and animated in Maya — rendered with Arnold and textured in Substance Painter for heavy, worn metal.',
     tools:['Maya','Arnold','Substance Painter'],
     links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=mx03a1LzNX0'}],
     video:'https://www.youtube.com/embed/mx03a1LzNX0?rel=0',images:[]},
-  c4d:   {title:'시포디', cat:'Animation · 3D · Cinema 4D',
-    desc:'화물을 짊어진 바퀴 달린 배달 로봇이 도시를 누비는 스타일라이즈 3D 모션 단편. Cinema 4D로 캐릭터 셋업과 애니메이션을 구성하고 Octane으로 라이팅·질감을, Substance Painter로 디테일을 입혔다.',
-    descEn:'A stylized 3D motion piece — a wheeled delivery bot hauling its cargo through the city. Set up and animated in Cinema 4D, lit and rendered in Octane, detailed in Substance Painter.',
-    tools:['Cinema 4D','Octane','Substance Painter'],
-    links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=ZcVD7h4LhxQ'}],
-    video:'https://www.youtube.com/embed/ZcVD7h4LhxQ?rel=0',images:[]},
-  ue5:   {title:'언리얼 RED / 9',cat:'UE5 Cinematic',desc:'Unreal Engine 5 리얼타임 렌더링 시네마틱.',tools:['Unreal Engine 5','RED Camera','Maya'],images:[]},
-  model: {title:'스타일라이즈 모델링',cat:'3D Modeling',desc:'애니메이션 시네마틱용 스타일라이즈 3D 캐릭터 모델링.',tools:['Maya','ZBrush','Substance Painter'],images:[]},
   illustPaint:{title:'반실사',cat:'Illustration · Digital Painting',
     desc:'반실사 톤의 캐릭터 페인팅과 컨셉 일러스트 모음.',
     descEn:'Semi-realistic character paintings and concept illustrations.',
