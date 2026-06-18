@@ -222,6 +222,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
 .work-slot.has-img::before{content:'';position:absolute;inset:8px;border:1px solid transparent;z-index:2;pointer-events:none;transition:border-color .2s}
 .work-slot.has-img:hover::before{border-color:var(--acc-dim)}
 .slot-num{position:absolute;bottom:9px;right:11px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:var(--acc);background:rgba(10,11,14,.6);padding:2px 6px}
+.slot-time{position:absolute;top:9px;left:11px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.06em;color:var(--bg);background:var(--acc);padding:2px 6px}
 
 /* ── LIGHTBOX ── */
 .lb{position:fixed;inset:0;z-index:1000;background:rgba(4,5,7,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s}
@@ -509,7 +510,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
 <script>
 const PROJECTS = {
   playnowz: {
-    title:'PLAY NOWZ', cat:'Web Game · 2D · 팬 참여형 시뮬레이션', period:'2025 · 뉴콘텐츠아카데미(NCA)',
+    title:'PLAY NOWZ', cat:'Web Game · 2D · 팬 참여형 시뮬레이션', period:'2025 · NCA · 약 6주',
     desc:'CUBE 엔터테인먼트 아이돌 그룹 NOWZ의 IP를 기반으로 한 팬 참여형 웹 시뮬레이션 게임. 해체 위기에 놓인 2군 야구팀의 임시 코치가 되어 5명의 선수들과 함께 훈련하고 성장해 가는 내러티브를 담았다. 2025 뉴콘텐츠아카데미(NCA, 한국콘텐츠진흥원) 단기과정에서 팀 \'렛츠기릿(Let\'s Grit)\'으로 제작했으며, 12월 NCA 쇼케이스에 전시되었다. UX·게임플로우 기획과 전반적인 일러스트·아트를 담당했다.',
     descEn:'A fan-participation web simulation game based on the IP of CUBE Entertainment\'s idol group NOWZ. You become the temporary coach of a struggling second-tier baseball team and train and grow alongside its five players. Created as team \'Let\'s Grit\' in the 2025 New Content Academy (NCA, KOCCA) program and exhibited at the December NCA showcase. Responsible for UX & game-flow planning and the overall illustration and art.',
     tools:['Photoshop','Clip Studio Paint'],
@@ -519,7 +520,7 @@ const PROJECTS = {
     images:['assets/img/playnowz/poster.jpg','assets/img/playnowz/char-01.jpg','assets/img/playnowz/char-02.jpg','assets/img/playnowz/char-03.jpg','assets/img/playnowz/char-04.jpg','assets/img/playnowz/char-05.jpg','assets/img/playnowz/playnowz-01.jpg','assets/img/playnowz/playnowz-02.jpg','assets/img/playnowz/exh-01.jpg','assets/img/playnowz/exh-02.jpg','assets/img/playnowz/exh-03.jpg','assets/img/playnowz/plan-01.jpg','assets/img/playnowz/plan-02.jpg','assets/img/playnowz/plan-03.jpg']
   },
   cinema: {
-    title:'Silent Reel', cat:'Game · 3D · Free to Play', period:'2025 · Steam 7월 출시',
+    title:'Silent Reel', cat:'Game · 3D · Free to Play', period:'2025 · 약 2개월 · Steam 7월 출시',
     desc:'텅 빈 영화관을 배경으로 한 3D 공포 게임. 상영관 사이의 이상 현상을 관찰해 변화가 없으면 전진, 있으면 후퇴하며 0~8번 상영관을 빠져나간다. 전체 3D 아트 디렉션과 비주얼 구현을 담당한 Unity 팀 프로젝트.',
     descEn:'A 3D horror game set in an empty cinema. Detect anomalies between halls — move forward if unchanged, backward if changed. Navigate Screens 0-8. Overall 3D art direction and visual implementation. Unity team project.',
     tools:['Unity','Maya','Substance Painter','Photoshop'],
@@ -528,9 +529,9 @@ const PROJECTS = {
     images:['assets/img/cinema/01.jpg','assets/img/cinema/02.jpg','assets/img/cinema/03.jpg','assets/img/cinema/04.jpg','assets/img/cinema/05.jpg','https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3799310/b06c38c90003704856ce8abe460a130e5e6e10e3/ss_b06c38c90003704856ce8abe460a130e5e6e10e3.1920x1080.jpg?t=1752655807','assets/img/cinema/06.jpg','assets/img/cinema/07.jpg','assets/img/cinema/08.jpg']
   },
   elem: {
-    title:'Elementality', cat:'Game · 2D', period:'Jan - Mar 2026 · Dev. Discontinued',
-    desc:'2D 턴제 덱빌딩 로그라이크. 속성 상성과 시너지를 활용하는 그리드 기반 전술 전투를 다룬다. 비주얼 컨셉·캐릭터 디자인·UI 등 전체 2D 아트를 담당했고 트레일러를 직접 제작했다.',
-    descEn:'A 2D turn-based deck-building roguelike. Grid-based tactical combat with elemental affinities and synergy building. Handled overall 2D art — visual concept, character design, UI. Trailer self-produced.',
+    title:'Elementality', cat:'Game · 2D', period:'Jan – Mar 2026 · 트레일러 약 1주',
+    desc:'2D 턴제 덱빌딩 로그라이크. 속성 상성과 시너지를 활용하는 그리드 기반 전술 전투를 다룬다. 비주얼 컨셉·캐릭터 디자인·UI 등 전체 2D 아트를 담당했고, 트레일러는 시놉시스·스토리보드·편집·AI 사운드까지 혼자 제작했다 (약 1주).',
+    descEn:'A 2D turn-based deck-building roguelike. Grid-based tactical combat with elemental affinities and synergy building. Handled overall 2D art — visual concept, character design, UI. Solely produced the trailer end to end — synopsis, storyboard, editing and AI sound (about 1 week).',
     tools:['Unity','Clip Studio Paint','After Effects'],
     links:[{label:'Trailer',cls:'steam',url:'https://youtu.be/cc7ulhFwLnI'}],
     video:'https://www.youtube.com/embed/cc7ulhFwLnI?rel=0',
@@ -552,14 +553,14 @@ const PROJECTS = {
     links:[],
     images:['assets/img/survive/11.png','assets/img/survive/01.jpg','assets/img/survive/02.jpg','assets/img/survive/03.jpg','assets/img/survive/04.jpg','assets/img/survive/05.jpg','assets/img/survive/06.jpg','assets/img/survive/07.jpg','assets/img/survive/08.jpg','assets/img/survive/09.jpg','assets/img/survive/10.jpg']
   },
-  bong:  {title:'봉추찜닭',  cat:'Illustration · 2D · Ad', period:'2024 · 광고 공모전',
+  bong:  {title:'봉추찜닭',  cat:'Illustration · 2D · Ad', period:'2024 · 광고 공모전 · 일러스트 약 2일',
     desc:'봉추찜닭 브랜드 광고 공모전 출품작. 브랜드 캐릭터와 광고에 쓰인 에셋 일러스트레이션을 Illustrator로 직접 그렸다 (영상 애니메이션 연출은 팀원 담당). 2024 봉추찜닭 광고 공모전 장려상 수상작.',
     descEn:'An entry for the Bongchu Jjimdak brand ad contest. Drew the brand mascot and ad assets as original illustrations in Illustrator (motion/animation handled by a teammate). Awarded at the 2024 Bongchu Jjimdak Ad Contest.',
     tools:['Illustrator','Photoshop'],
     links:[{label:'Watch',cls:'yt',url:'https://www.youtube.com/watch?v=492fwP5KLtU'}],
     video:'https://www.youtube.com/embed/492fwP5KLtU?rel=0',
     images:['assets/img/bong/bong-01.png','assets/img/bong/bong-02.png','assets/img/bong/bong-03.png','assets/img/bong/bong-04.png','assets/img/bong/bong-05.png','assets/img/bong/bong-06.png','assets/img/bong/bong-07.png']},
-  maya:  {title:'3D',cat:'3D · Modeling · Cinematic (보조 역량)',
+  maya:  {title:'3D',cat:'3D · Modeling · Cinematic (보조 역량)', period:'캐릭터 모델링 15h · 애니메이션+렌더 20h',
     desc:'2D 작업을 보조하는 3D 역량. 스타일라이즈 캐릭터를 모델링·리깅하고(Maya·ZBrush·Substance Painter), 메카닉 시네마틱과 모션 단편을 Maya·Arnold / Cinema 4D·Octane로 연출했다.',
     descEn:'3D as a supporting skill alongside 2D work. Stylized character modeling and rigging (Maya · ZBrush · Substance Painter), plus mechanical cinematics and motion shorts staged in Maya · Arnold / Cinema 4D · Octane.',
     tools:['Maya','Cinema 4D','Arnold','Octane','ZBrush','Substance Painter'],
@@ -571,17 +572,21 @@ const PROJECTS = {
     desc:'반실사 톤의 캐릭터 페인팅과 컨셉 일러스트 모음.',
     descEn:'Semi-realistic character paintings and concept illustrations.',
     tools:['Clip Studio Paint','Photoshop','Procreate'],
-    images:['assets/img/illust/painterly/painterly-13.jpg','assets/img/illust/painterly/painterly-14.jpg','assets/img/illust/painterly/painterly-15.jpg','assets/img/illust/painterly/painterly-16.jpg','assets/img/illust/painterly/painterly-11.jpg','assets/img/illust/painterly/painterly-05.png','assets/img/illust/painterly/painterly-08.jpg','assets/img/illust/painterly/painterly-02.png','assets/img/illust/painterly/painterly-07.jpg','assets/img/illust/painterly/painterly-01.jpg','assets/img/illust/painterly/painterly-17.jpg']},
+    images:['assets/img/illust/painterly/painterly-13.jpg','assets/img/illust/painterly/painterly-14.jpg','assets/img/illust/painterly/painterly-15.jpg','assets/img/illust/painterly/painterly-16.jpg','assets/img/illust/painterly/painterly-11.jpg','assets/img/illust/painterly/painterly-05.png','assets/img/illust/painterly/painterly-02.png','assets/img/illust/painterly/painterly-07.jpg','assets/img/illust/painterly/painterly-01.jpg','assets/img/illust/painterly/painterly-17.jpg'],
+    times:['4h','5h','3h','4h','5h','3h','4h','5h','3h','4h']},
   illustAnime:{title:'애니 / 서브컬쳐',cat:'Illustration · Anime',
     desc:'서브컬쳐 스타일 캐릭터 일러스트 모음.',
     descEn:'Subculture-style character illustrations.',
     tools:['Clip Studio Paint','Photoshop'],
-    images:['assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-07.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg']},
+    extraVideos:['VwMaqUY-lCE'],
+    images:['assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-07.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg'],
+    times:['6h','3h','5h','2–3h','2h','6h']},
   illustNoir:{title:'그래픽 노블',cat:'Illustration · Graphic Novel',
     desc:'레드·블랙 고대비 그래픽과 코믹 패널 연출의 드라마틱한 일러스트 모음.',
     descEn:'Dramatic high-contrast red-black graphics with comic-panel staging.',
     tools:['Clip Studio Paint','Photoshop'],
-    images:['assets/img/illust/noir/noir-01.jpg','assets/img/illust/noir/noir-02.jpg','assets/img/illust/noir/noir-03.jpg','assets/img/illust/noir/noir-06.jpg','assets/img/illust/noir/noir-07.jpg','assets/img/illust/noir/noir-08.jpg','assets/img/illust/noir/noir-09.jpg','assets/img/illust/noir/noir-10.jpg','assets/img/illust/noir/noir-11.jpg']}
+    images:['assets/img/illust/noir/noir-01.jpg','assets/img/illust/noir/noir-02.jpg','assets/img/illust/noir/noir-03.jpg','assets/img/illust/noir/noir-06.jpg','assets/img/illust/noir/noir-07.jpg','assets/img/illust/noir/noir-08.jpg','assets/img/illust/noir/noir-09.jpg','assets/img/illust/noir/noir-10.jpg','assets/img/illust/noir/noir-11.jpg'],
+    times:['2h','1h','1h','2h','2h','3h','2h','4h','3h']}
 };
 
 const backdrop=document.getElementById('backdrop'),modal=document.getElementById('modal');
@@ -590,11 +595,12 @@ const mCat=document.getElementById('modal-cat'),mDesc=document.getElementById('m
 const mTools=document.getElementById('modal-tools'),mLinks=document.getElementById('modal-links');
 const mWorks=document.getElementById('modal-works');
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbCounter=document.getElementById('lb-counter');
-let lbSrcs=[],lbIdx=0;
-function openLb(srcs,i){lbSrcs=srcs;lbIdx=i;lbImg.src=srcs[i];lbCounter.textContent=String(i+1).padStart(2,'0')+' / '+String(srcs.length).padStart(2,'0');lb.classList.add('open');}
+let lbSrcs=[],lbCaps=[],lbIdx=0;
+function lbSetCounter(){var base=String(lbIdx+1).padStart(2,'0')+' / '+String(lbSrcs.length).padStart(2,'0'),c=lbCaps[lbIdx];lbCounter.textContent=c?base+'  ·  '+c:base;}
+function openLb(srcs,caps,i){lbSrcs=srcs;lbCaps=caps||[];lbIdx=i;lbImg.src=srcs[i];lbSetCounter();lb.classList.add('open');}
 function closeLb(){lb.classList.remove('open');lbImg.src='';}
-function lbMove(d){if(!lbSrcs.length)return;lbIdx=(lbIdx+d+lbSrcs.length)%lbSrcs.length;lbImg.src=lbSrcs[lbIdx];lbCounter.textContent=String(lbIdx+1).padStart(2,'0')+' / '+String(lbSrcs.length).padStart(2,'0');}
-function lbOpenFromSlot(slot){var all=mWorks.querySelectorAll('.work-slot.has-img'),srcs=Array.from(all).map(function(s){return s.querySelector('img').src;}),idx=Array.from(all).indexOf(slot);openLb(srcs,idx>=0?idx:0);}
+function lbMove(d){if(!lbSrcs.length)return;lbIdx=(lbIdx+d+lbSrcs.length)%lbSrcs.length;lbImg.src=lbSrcs[lbIdx];lbSetCounter();}
+function lbOpenFromSlot(slot){var arr=Array.from(mWorks.querySelectorAll('.work-slot.img-slot')),srcs=arr.map(function(s){return s.querySelector('img').src;}),caps=arr.map(function(s){return s.getAttribute('data-time')||'';}),idx=arr.indexOf(slot);openLb(srcs,caps,idx>=0?idx:0);}
 lb.onclick=function(e){if(e.target===lb)closeLb();};
 
 function openModal(id){
@@ -608,7 +614,7 @@ function openModal(id){
   (p.extraVideos||[]).forEach(function(vid){var vUrl='https://www.youtube.com/watch?v='+vid;h+='<div class="work-slot has-img" onclick="window.open(\''+vUrl+'\',\'_blank\')" style="cursor:pointer"><img src="https://i.ytimg.com/vi/'+vid+'/maxresdefault.jpg" loading="lazy" style="opacity:.85" onerror="this.src=\'https://i.ytimg.com/vi/'+vid+'/hqdefault.jpg\'"/><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><svg width=38 height=38 viewBox="0 0 24 24" style="fill:var(--acc);filter:drop-shadow(0 0 6px rgba(0,0,0,.6))"><path d="M8 5v14l11-7z"/></svg></div></div>';});
   var imgs=p.images||[];
   if(!imgs.length && !p.video){h+='<div class="work-slot" style="grid-column:1/-1;aspect-ratio:16/6;cursor:default"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(233,231,224,.25)">⚠ WORK IN PROGRESS — 이미지 준비중</div></div>';}
-  imgs.forEach(function(src,i){h+='<div class="work-slot has-img" onclick="lbOpenFromSlot(this)"><img src="'+src+'" loading="lazy" alt=""/><span class="slot-num">'+String(i+1).padStart(2,'0')+'</span></div>';});
+  imgs.forEach(function(src,i){var t=(p.times&&p.times[i])||'';h+='<div class="work-slot has-img img-slot" data-time="'+t+'" onclick="lbOpenFromSlot(this)"><img src="'+src+'" loading="lazy" alt=""/><span class="slot-num">'+String(i+1).padStart(2,'0')+'</span>'+(t?'<span class="slot-time">'+t+'</span>':'')+'</div>';});
   mWorks.innerHTML=h;
   backdrop.classList.add('open');modal.classList.add('open');document.body.classList.add('locked');modal.scrollTop=0;
 }
