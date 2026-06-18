@@ -514,6 +514,7 @@ const PROJECTS = {
     tools:['Photoshop','Clip Studio Paint'],
     links:[{label:'Play Now',cls:'steam',url:'https://1993hole.github.io/playnowz'},{label:'Article',cls:'yt',url:'https://www.mt.co.kr/culture/2025/11/24/2025112411571435932'}],
     video:'https://www.youtube.com/embed/m-IyeBQZD6Q?rel=0',
+    playUrl:'https://1993hole.github.io/playnowz',
     images:['assets/img/playnowz/poster.jpg','assets/img/playnowz/char-01.jpg','assets/img/playnowz/char-02.jpg','assets/img/playnowz/char-03.jpg','assets/img/playnowz/char-04.jpg','assets/img/playnowz/char-05.jpg','assets/img/playnowz/playnowz-01.jpg','assets/img/playnowz/playnowz-02.jpg','assets/img/playnowz/exh-01.jpg','assets/img/playnowz/exh-02.jpg','assets/img/playnowz/exh-03.jpg']
   },
   cinema: {
@@ -608,7 +609,7 @@ function openModal(id){
   mTools.innerHTML=(p.tools||[]).map(function(t){return '<span class="tool-tag">'+t+'</span>';}).join('');
   mLinks.innerHTML=(p.links||[]).map(function(l){return '<a class="modal-link '+l.cls+'" href="'+l.url+'" target="_blank" rel="noopener">'+l.label+'</a>';}).join('');
   var h='';
-  if(p.video){var ytId=p.video.replace('https://www.youtube.com/embed/','').split('?')[0],ytUrl='https://www.youtube.com/watch?v='+ytId,ytThumb='https://i.ytimg.com/vi/'+ytId+'/maxresdefault.jpg';h+='<div class="work-slot is-video yt-slot" onclick="window.open(\''+ytUrl+'\',\'_blank\')" style="cursor:pointer"><img src="'+ytThumb+'" style="width:100%;height:100%;object-fit:cover;opacity:.7" onerror="this.style.opacity=0"/><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><svg width=52 height=52 viewBox="0 0 24 24" style="fill:var(--acc)"><path d="M8 5v14l11-7z"/></svg><span style="font-family:monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">▶ WATCH ON YOUTUBE</span></div></div>';}
+  if(p.video){var ytId=p.video.replace('https://www.youtube.com/embed/','').split('?')[0],ytUrl='https://www.youtube.com/watch?v='+ytId,ytThumb='https://i.ytimg.com/vi/'+ytId+'/maxresdefault.jpg',slotUrl=p.playUrl||ytUrl,slotLabel=p.playUrl?'▶ PLAY NOW':'▶ WATCH ON YOUTUBE';h+='<div class="work-slot is-video yt-slot" onclick="window.open(\''+slotUrl+'\',\'_blank\')" style="cursor:pointer"><img src="'+ytThumb+'" style="width:100%;height:100%;object-fit:cover;opacity:.7" onerror="this.style.opacity=0"/><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><svg width=52 height=52 viewBox="0 0 24 24" style="fill:var(--acc)"><path d="M8 5v14l11-7z"/></svg><span style="font-family:monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">'+slotLabel+'</span></div></div>';}
   var imgs=p.images||[];
   if(!imgs.length && !p.video){h+='<div class="work-slot" style="grid-column:1/-1;aspect-ratio:16/6;cursor:default"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(233,231,224,.25)">⚠ WORK IN PROGRESS — 이미지 준비중</div></div>';}
   imgs.forEach(function(src,i){h+='<div class="work-slot has-img" onclick="lbOpenFromSlot(this)"><img src="'+src+'" loading="lazy" alt=""/><span class="slot-num">'+String(i+1).padStart(2,'0')+'</span></div>';});
