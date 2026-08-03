@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SOLBAKIN — Game Artist · Hong Yujin</title>
-<meta name="description" content="솔바킨(홍유진) — 게임 원화, 캐릭터 디자인, UI, 2D 에셋과 비주얼 개발을 아우르는 Game Artist."/>
+<title>홍유진 (SOLVAKIN) — Game Concept Artist</title>
+<meta name="description" content="SOLVAKIN(홍유진) — 게임 원화, 캐릭터 디자인, 일러스트레이션과 비주얼 개발을 아우르는 Game Concept Artist."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
@@ -258,7 +258,8 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim
   .hero-bottom{flex-direction:column;align-items:flex-start;gap:18px}
   .hero-awards-mini{text-align:left}
   .gallery{grid-template-columns:repeat(2,1fr)}
-  .gal-sec[data-sec="art"] .gallery,.gal-sec[data-sec="2d"] .gallery{grid-template-columns:repeat(2,1fr)}
+  .gal-sec[data-sec="art"] .gallery{grid-template-columns:1fr}
+  .gal-sec[data-sec="2d"] .gallery{grid-template-columns:repeat(2,1fr)}
   .about-wrap{grid-template-columns:1fr}
   .about-col{border-right:none;border-bottom:1px solid var(--line);padding:40px 20px}
   .modal-header{flex-direction:column;align-items:flex-start;gap:22px}
@@ -373,7 +374,7 @@ nav{
   transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .3s;
 }
 .hero-art::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,5,7,.12) 25%,rgba(4,5,7,.05) 47%,rgba(4,5,7,.82) 100%);pointer-events:none}
-.hero-art img{width:100%;height:100%;display:block;object-fit:cover;object-position:67% 50%;image-rendering:auto;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s}
+.hero-art img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;image-rendering:auto;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s}
 .hero-art:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);box-shadow:0 42px 110px rgba(0,0,0,.5)}
 .hero-art:hover img{transform:scale(1.025);filter:saturate(1.05)}
 .hero-art-top{position:absolute;top:20px;left:20px;right:20px;z-index:2;display:flex;justify-content:space-between;color:rgba(255,255,255,.82);font-family:'JetBrains Mono',monospace;font-size:.59rem;letter-spacing:.09em;text-shadow:0 1px 12px #000}
@@ -410,7 +411,10 @@ nav{
 .filter-count{flex:0 0 auto;margin-left:auto;padding:0 12px;color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.05em}
 
 /* Work gallery */
-#grid{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 24px 16px}
+#grid{position:relative;z-index:2;display:flex;flex-direction:column;max-width:1440px;margin:0 auto;padding:0 24px 16px}
+.gal-sec[data-sec="art"]{order:1}
+.gal-sec[data-sec="game"]{order:2}
+.gal-sec[data-sec="2d"]{order:3}
 .gal-sec{margin-bottom:72px}
 .gal-sec:last-child{margin-bottom:0}
 .gal-sec.hide,.card.hide{display:none}
@@ -420,7 +424,8 @@ nav{
 .sub-count{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.06em}
 .gallery{position:relative;z-index:2;display:grid;grid-template-columns:repeat(12,1fr);gap:18px;background:transparent}
 .gal-sec[data-sec="game"] .gallery{grid-template-columns:repeat(12,1fr)}
-.gal-sec[data-sec="art"] .gallery,.gal-sec[data-sec="2d"] .gallery{grid-template-columns:repeat(3,1fr)}
+.gal-sec[data-sec="art"] .gallery{grid-template-columns:1fr}
+.gal-sec[data-sec="2d"] .gallery{grid-template-columns:repeat(3,1fr)}
 .gal-sec[data-sec="game"] .card:not(.feature){grid-column:span 6}
 .card{
   --thumb-x:50%;--thumb-y:50%;position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;padding:0;border:1px solid var(--line);border-radius:var(--radius);
@@ -428,7 +433,7 @@ nav{
   transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .35s;
 }
 .card.feature{grid-column:1/-1;aspect-ratio:2/1}
-.gal-sec[data-sec="art"] .card{aspect-ratio:4/5}
+.gal-sec[data-sec="art"] .card{aspect-ratio:16/9}
 .gal-sec[data-sec="2d"] .card{aspect-ratio:16/10}
 .card.wide{grid-column:span 2;aspect-ratio:2/1}
 .gallery .card[data-layout="feature"]{grid-column:1/-1!important;aspect-ratio:2/1!important}
@@ -569,7 +574,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   .hero{display:grid;gap:32px;padding:42px 16px 26px}
   .hero-copy{padding:0}
   .hero-label{margin-bottom:24px;font-size:.57rem;letter-spacing:.07em}
-  .hero-name{margin-bottom:16px;font-size:clamp(3.7rem,19vw,5.7rem)}
+  .hero-name{margin-bottom:16px;font-size:clamp(2.5rem,12vw,4.4rem)}
   .hero-signature{margin-bottom:22px}
   .hero-bio{font-size:.91rem;line-height:1.75}
   .hero-bio strong{font-size:1.03rem}
@@ -577,7 +582,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   .hero-primary,.hero-secondary{width:100%}
   .hero-secondary,.hero-meta,.hero-bottom{display:none}
   .hero-art{order:-1;aspect-ratio:4/3;border-radius:22px}
-  .hero-art img{object-position:69% 50%}
+  .hero-art img{object-position:50% 50%}
   .hero-art-top{top:14px;left:14px;right:14px;font-size:.5rem}
   .hero-art-caption{left:16px;right:16px;bottom:15px}
   .hero-art-caption strong{font-size:1.45rem}
@@ -596,7 +601,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   .gallery .card[data-layout],.gallery .card[data-aspect]{grid-column:auto!important}
   .gallery .card[data-layout="feature"][data-aspect="auto"]{aspect-ratio:16/10!important}
   .gallery .card[data-layout="wide"][data-aspect="auto"]{aspect-ratio:4/3!important}
-  .gal-sec[data-sec="art"] .card{aspect-ratio:4/5}
+  .gal-sec[data-sec="art"] .card{aspect-ratio:4/3}
   .c-hover{padding:19px}
   .c-title,.card.feature .c-title{font-size:1.55rem}
   .c-desc{display:none}
@@ -641,7 +646,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#"><span>SOLBAKIN</span><small>솔바킨</small></a>
+  <a class="logo" href="#"><span>SOLVAKIN</span><small>솔바킨</small></a>
   <ul class="nav-links">
     <li><a href="#gallery">WORKS</a></li>
     <li><a href="#about">ABOUT</a></li>
@@ -656,29 +661,28 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
 <!-- HERO -->
 <section class="hero">
   <div class="hero-copy">
-    <p class="hero-label"><span class="status-dot"></span>AVAILABLE · HONG YUJIN · SOLBAKIN · SEOUL</p>
-    <h1 class="hero-name">GAME<span class="en">ARTIST.</span></h1>
-    <p class="hero-signature">솔바킨 <span>/ HONG YUJIN</span></p>
+    <p class="hero-label"><span class="status-dot"></span>AVAILABLE · HONG YUJIN · SOLVAKIN · SEOUL</p>
+    <h1 class="hero-name">GAME CONCEPT<span class="en">ARTIST.</span></h1>
+    <p class="hero-signature">홍유진 <span>/ HONG YUJIN · SOLVAKIN (솔바킨)</span></p>
     <p class="hero-bio">
       <strong>플레이되는 세계의 인상과 감각을 설계합니다.</strong>
-      캐릭터, 컨셉, UI와 2D 에셋을 하나의 게임 경험으로 연결하는 아티스트입니다.
+      캐릭터와 컨셉을 중심으로 게임의 세계관과 비주얼을 설계하는 컨셉 아티스트입니다.
     </p>
     <div class="hero-actions">
       <a class="hero-primary" href="#gallery">SELECTED WORKS <span>↓</span></a>
-      <a class="hero-secondary" href="assets/Hong-Yujin-Portfolio.pdf" download="홍유진_포트폴리오.pdf">PORTFOLIO PDF ↗</a>
     </div>
     <div class="hero-meta">
-      <div class="hero-meta-item"><span>Focus</span><strong>2D · Concept · UI</strong></div>
+      <div class="hero-meta-item"><span>Focus</span><strong>Concept Art · Character · Illustration</strong></div>
       <div class="hero-meta-item"><span>Based</span><strong>Seoul, KR</strong></div>
       <div class="hero-meta-item"><span>School</span><strong>K-Arts</strong></div>
     </div>
   </div>
 
-  <button class="hero-art" type="button" data-project-id="elem" data-focal-x="67" data-focal-y="50" onclick="openModal(this.dataset.projectId)" aria-label="Elementality 프로젝트 보기">
-    <img src="assets/img/elem/01.jpg" alt="Elementality의 네 가지 원소로 나뉜 설산 성채 컨셉 아트"/>
-    <span class="hero-art-top"><span>FEATURED PROJECT</span><span>2026</span></span>
+  <button class="hero-art" type="button" data-project-id="illustAnime" data-focal-x="50" data-focal-y="50" onclick="openModal(this.dataset.projectId)" aria-label="일러스트레이션 작품 보기">
+    <img src="assets/img/illust/anime/purple-evening-illustration.jpg" alt="보랏빛 야경을 배경으로 앉아 있는 캐릭터 일러스트레이션"/>
+    <span class="hero-art-top"><span>FEATURED ILLUSTRATION</span><span></span></span>
     <span class="hero-art-caption">
-      <span><small>GAME · 2D ART DIRECTION</small><strong>ELEMENTALITY</strong></span>
+      <span><small>ANIME · SUBCULTURE</small><strong>ILLUSTRATION</strong></span>
       <span class="hero-arrow">↗</span>
     </span>
   </button>
@@ -687,7 +691,6 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
     <div class="hero-chips">
       <span class="chip">Concept Art</span>
       <span class="chip">Character Design</span>
-      <span class="chip">Game UI</span>
       <span class="chip">2D Assets</span>
       <span class="chip">Illustration</span>
       <span class="chip">3D Cinematic</span>
@@ -709,11 +712,11 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
 <!-- FILTER -->
 <div class="filter-bar" id="gallery">
   <button class="fb on" data-f="all" aria-pressed="true">All work</button>
+  <button class="fb" data-f="art" aria-pressed="false">Illustration</button>
   <button class="fb" data-f="game" aria-pressed="false">Games</button>
   <button class="fb" data-f="3d" aria-pressed="false">3D</button>
   <button class="fb" data-f="2d" aria-pressed="false">2D / Motion</button>
-  <button class="fb" data-f="art" aria-pressed="false">Illustration</button>
-  <span class="filter-count" id="count" aria-live="polite">10 projects</span>
+  <span class="filter-count" id="count" aria-live="polite">8 projects</span>
 </div>
 
 <!-- GALLERY -->
@@ -740,7 +743,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
       <button class="card" data-placement-id="game:playnowz" data-id="playnowz" data-c="game 2d" style="--thumb-y:22%" onclick="openModal(this.dataset.id)">
         <div class="c-bg" style="background-image:url('assets/img/playnowz/poster.jpg')"></div>
         <span class="c-label">Web Game · 2D</span>
-        <div class="c-hover"><p class="c-tag">Web Game · 2D · 팬 참여형 시뮬레이션</p><p class="c-title">PLAY NOWZ</p><p class="c-desc">CUBE 아이돌 NOWZ IP 야구 웹게임 · UX·게임플로우·아트</p><p class="c-play">▶ VIEW PROJECT</p></div>
+        <div class="c-hover"><p class="c-tag">Web Game · 2D · 팬 참여형 시뮬레이션</p><p class="c-title">PLAY NOWZ</p><p class="c-desc">CUBE 아이돌 NOWZ IP 야구 웹게임 · 캐릭터·일러스트·아트</p><p class="c-play">▶ VIEW PROJECT</p></div>
       </button>
       <button class="card" data-placement-id="game:cinema" data-id="cinema" data-c="game 3d" onclick="openModal(this.dataset.id)">
         <div class="c-bg" style="background-image:url('assets/img/cinema/02.jpg')"></div>
@@ -751,22 +754,12 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   </section>
 
   <section class="gal-sec" data-sec="art">
-    <div class="sub-head"><h3 class="sub-name">Illustration</h3><span class="sub-line"></span><span class="sub-count">03</span></div>
+    <div class="sub-head"><h3 class="sub-name">Illustration · Anime / Subculture</h3><span class="sub-line"></span><span class="sub-count">01</span></div>
     <div class="gallery">
-      <button class="card" data-placement-id="art:illustNoir" data-id="illustNoir" data-c="art" onclick="openModal(this.dataset.id)">
-        <div class="c-bg" style="background-image:url('assets/img/thumb/illust-noir.jpg')"></div>
-        <span class="c-label">Illustration</span>
-        <div class="c-hover"><p class="c-tag">Illustration · Graphic Novel</p><p class="c-title">그래픽 노블</p><p class="c-desc">레드·블랙 · 고대비 · 코믹 패널</p><p class="c-play">▶ VIEW PROJECT</p></div>
-      </button>
       <button class="card" data-placement-id="art:illustAnime" data-id="illustAnime" data-c="art" style="--thumb-y:0%" onclick="openModal(this.dataset.id)">
-        <div class="c-bg" style="background-image:url('assets/img/thumb/illust-anime.jpg')"></div>
+        <div class="c-bg" style="background-image:url('assets/img/illust/anime/purple-evening-illustration.jpg')"></div>
         <span class="c-label">Illustration</span>
-        <div class="c-hover"><p class="c-tag">Illustration · Anime</p><p class="c-title">애니 / 서브컬쳐</p><p class="c-desc">서브컬쳐 캐릭터 일러스트</p><p class="c-play">▶ VIEW PROJECT</p></div>
-      </button>
-      <button class="card" data-placement-id="art:illustPaint" data-id="illustPaint" data-c="art" style="--thumb-x:68%;--thumb-y:50%" onclick="openModal(this.dataset.id)">
-        <div class="c-bg" style="background-image:url('assets/img/illust/painterly/painterly-07.jpg')"></div>
-        <span class="c-label">Illustration</span>
-        <div class="c-hover"><p class="c-tag">Illustration · Painting</p><p class="c-title">반실사</p><p class="c-desc">반실사 캐릭터 · 컨셉 · 디지털 페인팅</p><p class="c-play">▶ VIEW PROJECT</p></div>
+        <div class="c-hover"><p class="c-tag">Illustration · Anime / Subculture</p><p class="c-title">Illustration</p><p class="c-desc">애니 · 서브컬쳐 캐릭터 일러스트</p><p class="c-play">▶ VIEW ARTWORKS</p></div>
       </button>
     </div>
   </section>
@@ -804,7 +797,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   <div class="about-col">
     <span class="col-label">▸ Profile</span>
     <p class="about-text">
-      <strong>홍유진 · 솔바킨 · Hong Yujin</strong><br>
+      <strong>홍유진 · Hong Yujin · 솔바킨 / SOLVAKIN</strong><br>
       게임 한 편의 아트를 처음부터 끝까지 책임지는 작업을 좋아합니다. 솔로 프로젝트부터 6인 팀까지, 컨셉·캐릭터·UI의 아트 디렉션과 실제 제작을 두루 맡아 왔습니다.
     </p>
     <p class="about-text">
@@ -848,16 +841,15 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
     <span class="sec-label">Let’s build a world.</span>
   </div>
   <h2 class="ct-big">좋은 세계는<span class="en">함께 만듭니다.</span></h2>
-  <p class="ct-sub">게임 아트, 캐릭터, UI, 협업에 관한 이야기를 기다립니다.</p>
+  <p class="ct-sub">게임 컨셉 아트, 캐릭터, 일러스트레이션 협업에 관한 이야기를 기다립니다.</p>
   <div class="contact-actions">
     <a href="mailto:Dpang0@naver.com" class="btn-mail">메일 보내기 <span>↗</span></a>
-    <a href="assets/Hong-Yujin-Portfolio.pdf" download="홍유진_포트폴리오.pdf" class="ct-resume">Portfolio PDF ↓</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 — SOLBAKIN · HONG YUJIN</p>
-  <p>SEOUL, KR · GAME ARTIST / VISUAL DEVELOPMENT</p>
+  <p>© 2026 — 홍유진 · HONG YUJIN · SOLVAKIN</p>
+  <p>SEOUL, KR · GAME CONCEPT ARTIST / VISUAL DEVELOPMENT</p>
 </footer>
 
 <!-- MODAL -->
@@ -905,8 +897,8 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
 const PROJECTS = {
   playnowz: {
     title:'PLAY NOWZ', cat:'Web Game · 2D · 팬 참여형 시뮬레이션', period:'2025 · NCA · 약 6주',
-    desc:'CUBE 엔터테인먼트 아이돌 그룹 NOWZ의 IP를 기반으로 한 팬 참여형 웹 시뮬레이션 게임. 해체 위기에 놓인 2군 야구팀의 임시 코치가 되어 5명의 선수들과 함께 훈련하고 성장해 가는 내러티브를 담았다. 2025 뉴콘텐츠아카데미(NCA, 한국콘텐츠진흥원) 단기과정에서 팀 \'렛츠기릿(Let\'s Grit)\'으로 제작했으며, 12월 NCA 쇼케이스에 전시되었다. UX·게임플로우 기획과 전반적인 일러스트·아트를 담당했다.',
-    descEn:'A fan-participation web simulation game based on the IP of CUBE Entertainment\'s idol group NOWZ. You become the temporary coach of a struggling second-tier baseball team and train and grow alongside its five players. Created as team \'Let\'s Grit\' in the 2025 New Content Academy (NCA, KOCCA) program and exhibited at the December NCA showcase. Responsible for UX & game-flow planning and the overall illustration and art.',
+    desc:'CUBE 엔터테인먼트 아이돌 그룹 NOWZ의 IP를 기반으로 한 팬 참여형 웹 시뮬레이션 게임. 해체 위기에 놓인 2군 야구팀의 임시 코치가 되어 5명의 선수들과 함께 훈련하고 성장해 가는 내러티브를 담았다. 2025 뉴콘텐츠아카데미(NCA, 한국콘텐츠진흥원) 단기과정에서 팀 \'렛츠기릿(Let\'s Grit)\'으로 제작했으며, 12월 NCA 쇼케이스에 전시되었다. 캐릭터와 전반적인 일러스트·아트를 담당했다.',
+    descEn:'A fan-participation web simulation game based on the IP of CUBE Entertainment\'s idol group NOWZ. You become the temporary coach of a struggling second-tier baseball team and train and grow alongside its five players. Created as team \'Let\'s Grit\' in the 2025 New Content Academy (NCA, KOCCA) program and exhibited at the December NCA showcase. Responsible for character art and the overall illustration direction.',
     tools:['Photoshop','Clip Studio Paint'],
     links:[{label:'Play Now',cls:'steam',url:'https://1993hole.github.io/playnowz'},{label:'Article',cls:'yt',url:'https://www.mt.co.kr/culture/2025/11/24/2025112411571435932'}],
     video:'https://www.youtube.com/embed/m-IyeBQZD6Q?rel=0',
@@ -924,8 +916,8 @@ const PROJECTS = {
   },
   elem: {
     title:'Elementality', cat:'Game · 2D', period:'Jan – Mar 2026 · 트레일러 약 1주',
-    desc:'2D 턴제 덱빌딩 로그라이크. 속성 상성과 시너지를 활용하는 그리드 기반 전술 전투를 다룬다. 비주얼 컨셉·캐릭터 디자인·UI 등 전체 2D 아트를 담당했고, 트레일러는 시놉시스·스토리보드·편집·AI 사운드까지 혼자 제작했다 (약 1주).',
-    descEn:'A 2D turn-based deck-building roguelike. Grid-based tactical combat with elemental affinities and synergy building. Handled overall 2D art — visual concept, character design, UI. Solely produced the trailer end to end — synopsis, storyboard, editing and AI sound (about 1 week).',
+    desc:'2D 턴제 덱빌딩 로그라이크. 속성 상성과 시너지를 활용하는 그리드 기반 전술 전투를 다룬다. 비주얼 컨셉·캐릭터 디자인 등 전체 2D 아트를 담당했고, 트레일러는 시놉시스·스토리보드·편집·AI 사운드까지 혼자 제작했다 (약 1주).',
+    descEn:'A 2D turn-based deck-building roguelike. Grid-based tactical combat with elemental affinities and synergy building. Handled the visual concept, character design and overall 2D art. Solely produced the trailer end to end — synopsis, storyboard, editing and AI sound (about 1 week).',
     tools:['Unity','Clip Studio Paint','After Effects'],
     links:[{label:'Trailer',cls:'steam',url:'https://youtu.be/cc7ulhFwLnI'}],
     video:'https://www.youtube.com/embed/cc7ulhFwLnI?rel=0',
@@ -933,16 +925,16 @@ const PROJECTS = {
   },
   mamul1: {
     title:'Misery Market', cat:'Game · 2D · Solo', period:'Jun - Sep 2025 · Prototype',
-    desc:'고객에게 불행을 파는 마물이 되어 가게를 운영하는 경영 시뮬레이션. 블랙코미디와 윤리적 딜레마가 핵심이다. 게임 디자인·세계관·캐릭터 디자인·UI 등 모든 2D 아트를 맡은 솔로 프로젝트.',
-    descEn:'Management sim where you play as a demon selling misfortune to customers. Black comedy and ethical dilemmas. Solo project — game design, worldbuilding, character design, UI, all 2D art.',
+    desc:'고객에게 불행을 파는 마물이 되어 가게를 운영하는 경영 시뮬레이션. 블랙코미디와 윤리적 딜레마가 핵심이다. 게임 디자인·세계관·캐릭터 디자인과 모든 2D 아트를 맡은 솔로 프로젝트.',
+    descEn:'Management sim where you play as a demon selling misfortune to customers. Black comedy and ethical dilemmas. A solo project covering game design, worldbuilding, character design and all 2D art.',
     tools:['Unity','Clip Studio Paint'],
     links:[],
     images:['assets/img/mamul/01.jpg','assets/img/mamul/02.jpg','assets/img/mamul/03.jpg','assets/img/mamul/04.jpg','assets/img/mamul/05.jpg','assets/img/mamul/06.jpg','assets/img/mamul/plan-01.jpg','assets/img/mamul/plan-02.jpg']
   },
   survive: {
     title:'We Will Survive', cat:'Game · 2D · Team of 6', period:'Jun - Oct 2025',
-    desc:'우주를 표류하는 내러티브 생존 게임. 부족한 자원을 관리하며 승무원들의 사연을 풀어간다. 캐릭터 디자인·UI·일러스트 등 2D 에셋 전반의 아트 디렉션을 담당했다. 2025 콘텐츠 유니버스 코리아·서울게임타운 전시 선정작.',
-    descEn:'Narrative survival game set adrift in space. Manage scarce resources and uncover crew backstories. Art directed all 2D assets — character design, UI, illustration. Selected for 2025 Content Universe Korea and Seoul Game Town Exhibition.',
+    desc:'우주를 표류하는 내러티브 생존 게임. 부족한 자원을 관리하며 승무원들의 사연을 풀어간다. 캐릭터 디자인·일러스트 등 2D 에셋 전반의 아트 디렉션을 담당했다. 2025 콘텐츠 유니버스 코리아·서울게임타운 전시 선정작.',
+    descEn:'Narrative survival game set adrift in space. Manage scarce resources and uncover crew backstories. Art directed the character designs, illustrations and overall 2D assets. Selected for 2025 Content Universe Korea and Seoul Game Town Exhibition.',
     tools:['Unity','Clip Studio Paint'],
     links:[],
     images:['assets/img/survive/11.png','assets/img/survive/01.jpg','assets/img/survive/02.jpg','assets/img/survive/03.jpg','assets/img/survive/04.jpg','assets/img/survive/05.jpg','assets/img/survive/06.jpg','assets/img/survive/07.jpg','assets/img/survive/08.jpg','assets/img/survive/09.jpg','assets/img/survive/10.jpg']
@@ -962,25 +954,12 @@ const PROJECTS = {
     video:'https://www.youtube.com/embed/ZcVD7h4LhxQ?rel=0',
     extraVideos:['mx03a1LzNX0','hMSISc33rzo'],
     images:['assets/img/maya/maya-01.jpg','assets/img/maya/maya-02.jpg?v=2','assets/img/maya/maya-03.jpg?v=2','assets/img/maya/maya-04.jpg','assets/img/maya/maya-05.jpg','assets/img/maya/maya-06.jpg']},
-  illustPaint:{title:'반실사',cat:'Illustration · Digital Painting',
-    desc:'반실사 톤의 캐릭터 페인팅과 컨셉 일러스트 모음.',
-    descEn:'Semi-realistic character paintings and concept illustrations.',
-    tools:['Clip Studio Paint','Photoshop','Procreate'],
-    images:['assets/img/illust/painterly/painterly-13.jpg','assets/img/illust/painterly/painterly-14.jpg','assets/img/illust/painterly/painterly-15.jpg','assets/img/illust/painterly/painterly-16.jpg','assets/img/illust/painterly/painterly-11.jpg','assets/img/illust/painterly/painterly-05.png','assets/img/illust/painterly/painterly-02.png','assets/img/illust/painterly/painterly-07.jpg','assets/img/illust/painterly/painterly-01.jpg','assets/img/illust/painterly/painterly-17.jpg'],
-    times:['4h','5h','3h','4h','5h','3h','4h','5h','3h','4h']},
-  illustAnime:{title:'애니 / 서브컬쳐',cat:'Illustration · Anime',
+  illustAnime:{title:'Illustration',cat:'Anime / Subculture',
     desc:'서브컬쳐 스타일 캐릭터 일러스트 모음.',
     descEn:'Subculture-style character illustrations.',
     tools:['Clip Studio Paint','Photoshop'],
-    extraVideos:['VwMaqUY-lCE'],
-    images:['assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-07.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg'],
-    times:['6h','3h','5h','2–3h','2h','6h']},
-  illustNoir:{title:'그래픽 노블',cat:'Illustration · Graphic Novel',
-    desc:'레드·블랙 고대비 그래픽과 코믹 패널 연출의 드라마틱한 일러스트 모음.',
-    descEn:'Dramatic high-contrast red-black graphics with comic-panel staging.',
-    tools:['Clip Studio Paint','Photoshop'],
-    images:['assets/img/illust/noir/noir-01.jpg','assets/img/illust/noir/noir-02.jpg','assets/img/illust/noir/noir-03.jpg','assets/img/illust/noir/noir-06.jpg','assets/img/illust/noir/noir-07.jpg','assets/img/illust/noir/noir-08.jpg','assets/img/illust/noir/noir-09.jpg','assets/img/illust/noir/noir-10.jpg','assets/img/illust/noir/noir-11.jpg'],
-    times:['2h','1h','1h','2h','2h','3h','2h','4h','3h']}
+    images:['assets/img/illust/anime/purple-evening-illustration.jpg','assets/img/illust/anime/catgirl-expression-sheet.jpg','assets/img/illust/anime/catgirl-turnaround-sheet.jpg','assets/img/illust/anime/mint-character-concept-sheet.jpg','assets/img/illust/anime/male-character-blue.jpg','assets/img/illust/anime/male-character-red.jpg','assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg'],
+    times:['','','','','','','6h','5h','2–3h','2h','6h']}
 };
 
 const backdrop=document.getElementById('backdrop'),modal=document.getElementById('modal'),mBack=document.getElementById('modal-back');
@@ -1146,7 +1125,7 @@ function applyFilter(f){
 document.querySelectorAll('.fb').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-pressed','false');});btn.classList.add('on');btn.setAttribute('aria-pressed','true');applyFilter(btn.dataset.f);});});
 applyFilter('all');
 
-/* SOLBAKIN Studio runtime -------------------------------------------------- */
+/* SOLVAKIN Studio runtime -------------------------------------------------- */
 const STUDIO_SCHEMA=1,STUDIO_DRAFT_KEY='solbakin.studio.draft.v1';
 const STUDIO_SECTION_META={game:{title:'Games'},art:{title:'Illustration'},'2d':{title:'Motion & 3D'}};
 const studioParams=new URLSearchParams(location.search),studioMode=studioParams.get('studio')==='1',studioSession=studioParams.get('session')||'';
@@ -1177,7 +1156,7 @@ function studioBuildDefaults(){
   });
   var galleries={};
   Object.keys(PROJECTS).forEach(function(id){var p=PROJECTS[id];galleries[id]=(p.images||[]).map(function(src,index){return {imageId:studioImageId(id,index,src),src:src,time:(p.times&&p.times[index])||'',visible:true,span:index===0?'wide':'single',focal:{x:50,y:50}};});});
-  return {schemaVersion:STUDIO_SCHEMA,revision:0,updatedAt:'',hero:{projectId:hero.dataset.projectId||'elem',imageSrc:heroImg.getAttribute('src'),focal:{x:studioClamp(hero.dataset.focalX,67),y:studioClamp(hero.dataset.focalY,50)}},sectionOrder:Array.from(document.querySelectorAll('#grid .gal-sec')).map(function(s){return s.dataset.sec;}),placements:placements,galleries:galleries};
+  return {schemaVersion:STUDIO_SCHEMA,revision:0,updatedAt:'',hero:{projectId:hero.dataset.projectId||'illustAnime',imageSrc:heroImg.getAttribute('src'),focal:{x:studioClamp(hero.dataset.focalX,50),y:studioClamp(hero.dataset.focalY,50)}},sectionOrder:Array.from(document.querySelectorAll('#grid .gal-sec')).map(function(s){return s.dataset.sec;}),placements:placements,galleries:galleries};
 }
 function studioNormalize(input){
   var base=studioClone(studioDefaults),data=input&&typeof input==='object'?input:{};
