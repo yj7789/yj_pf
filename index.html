@@ -521,6 +521,18 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
 .modal-link.yt{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--dim)}
 .modal-link.yt:hover{border-color:rgba(255,255,255,.2);color:var(--txt)}
 .modal-works{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;padding:12px;background:#080a0c}
+.modal-works.is-grouped{display:block;padding:0 12px 48px}
+.work-group{padding-top:42px}
+.work-group+.work-group{margin-top:38px;padding-top:44px;border-top:1px solid var(--line)}
+.work-group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin:0 4px 18px}
+.work-group-kicker{display:block;margin-bottom:7px;color:var(--acc);font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase}
+.work-group-title{margin:0;color:var(--txt);font-size:clamp(1.35rem,2.4vw,2.15rem);font-weight:700;letter-spacing:-.045em}
+.work-group-desc{max-width:390px;margin:0;color:var(--dim2);font-size:.72rem;line-height:1.65;text-align:right;word-break:keep-all}
+.work-group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.work-group.layout-key .work-group-grid .work-slot:first-child{grid-column:span 2}
+.work-group.layout-sheets .work-group-grid{grid-template-columns:repeat(2,1fr)}
+.work-group.layout-sheets .work-slot{aspect-ratio:4/3;background:#eee}
+.work-group.layout-sheets .work-slot img{object-fit:contain}
 .work-slot{aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:none;text-decoration:none}
 .work-slot:first-child{grid-column:auto}
 .work-slot.is-video{grid-column:1/-1;aspect-ratio:16/9}
@@ -624,6 +636,13 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
   .modal-title{font-size:clamp(2.5rem,14vw,4.4rem)}
   .modal-desc{font-size:.8rem}
   .modal-works{grid-template-columns:1fr;gap:8px;padding:8px}
+  .modal-works.is-grouped{padding:0 8px 28px}
+  .work-group{padding-top:30px}
+  .work-group+.work-group{margin-top:26px;padding-top:30px}
+  .work-group-head{align-items:flex-start;flex-direction:column;gap:8px;margin:0 4px 14px}
+  .work-group-desc{text-align:left}
+  .work-group-grid,.work-group.layout-sheets .work-group-grid{grid-template-columns:1fr;gap:8px}
+  .work-group.layout-key .work-group-grid .work-slot:first-child{grid-column:auto}
   .work-slot,.work-slot:first-child{grid-column:auto;aspect-ratio:4/3;border-radius:13px}
   .work-slot.is-video{grid-column:auto;aspect-ratio:16/9}
   .work-slot.slot-wide,.work-slot.slot-full,.work-slot.slot-single{grid-column:auto}
@@ -837,7 +856,7 @@ footer p{color:var(--dim2);font-family:'JetBrains Mono',monospace;font-size:.57r
     <div class="sec-rule"></div>
     <span class="sec-label">Let’s build a world.</span>
   </div>
-  <h2 class="ct-big">새로운 세계를<span class="en">함께 그려갑니다.</span></h2>
+  <h2 class="ct-big">새로운 이야기를<span class="en">함께 그려요.</span></h2>
   <p class="ct-sub">게임 컨셉 아트, 캐릭터, 일러스트레이션 협업에 관한 이야기를 기다립니다.</p>
   <div class="contact-actions">
     <a href="mailto:hoyodog@naver.com" class="btn-mail">메일 보내기 <span>↗</span></a>
@@ -952,11 +971,14 @@ const PROJECTS = {
     extraVideos:['mx03a1LzNX0','hMSISc33rzo'],
     images:['assets/img/maya/maya-01.jpg','assets/img/maya/maya-02.jpg?v=2','assets/img/maya/maya-03.jpg?v=2','assets/img/maya/maya-04.jpg','assets/img/maya/maya-05.jpg','assets/img/maya/maya-06.jpg']},
   illustAnime:{title:'Illustration',cat:'Anime / Subculture',
-    desc:'서브컬쳐 스타일 캐릭터 일러스트 모음.',
-    descEn:'Subculture-style character illustrations.',
+    desc:'캐릭터 설정과 삼면도, 배경이 포함된 키 일러스트를 작업 성격에 따라 정리한 캐릭터 아트 모음.',
+    descEn:'Character art organized into design sheets and key illustrations.',
     tools:['Clip Studio Paint','Photoshop'],
-    images:['assets/img/illust/anime/purple-evening-illustration.jpg','assets/img/illust/anime/green-fantasy-character-concept.jpg','assets/img/illust/anime/white-coat-character-concept.jpg','assets/img/illust/anime/white-coat-character-turnaround.jpg','assets/img/illust/anime/catgirl-expression-sheet.jpg','assets/img/illust/anime/catgirl-turnaround-sheet.jpg','assets/img/illust/anime/purple-dress-turnaround-sheet.jpg','assets/img/illust/anime/pink-cafe-character-illustration.jpg','assets/img/illust/anime/blue-suit-male-character.jpg','assets/img/illust/anime/sci-fi-girl-illustration.png','assets/img/illust/anime/teal-catgirl-character-art.jpg','assets/img/illust/anime/mint-character-concept-sheet.jpg','assets/img/illust/anime/male-character-blue.jpg','assets/img/illust/anime/male-character-red.jpg','assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg'],
-    times:['','','','','','','','','','','','','','','6h','5h','2–3h','2h','6h']}
+    images:['assets/img/illust/anime/green-fantasy-character-concept.jpg','assets/img/illust/anime/teal-catgirl-character-art.jpg','assets/img/illust/anime/male-character-blue.jpg','assets/img/illust/anime/male-character-red.jpg','assets/img/illust/anime/white-coat-character-concept.jpg','assets/img/illust/anime/white-coat-character-turnaround.jpg','assets/img/illust/anime/catgirl-expression-sheet.jpg','assets/img/illust/anime/catgirl-turnaround-sheet.jpg','assets/img/illust/anime/purple-dress-turnaround-sheet.jpg','assets/img/illust/anime/mint-character-concept-sheet.jpg','assets/img/illust/anime/purple-evening-illustration.jpg','assets/img/illust/anime/pink-cafe-character-illustration.jpg','assets/img/illust/anime/sci-fi-girl-illustration.png','assets/img/illust/anime/blue-suit-male-character.jpg','assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg'],
+    imageSections:[
+      {kicker:'01 · CHARACTER DESIGN',title:'캐릭터 설정 · 삼면도',desc:'흰 배경 전신, 표정과 의상 구조를 정리한 캐릭터 디자인 시트',layout:'sheets',images:['assets/img/illust/anime/green-fantasy-character-concept.jpg','assets/img/illust/anime/teal-catgirl-character-art.jpg','assets/img/illust/anime/male-character-blue.jpg','assets/img/illust/anime/male-character-red.jpg','assets/img/illust/anime/white-coat-character-concept.jpg','assets/img/illust/anime/white-coat-character-turnaround.jpg','assets/img/illust/anime/catgirl-expression-sheet.jpg','assets/img/illust/anime/catgirl-turnaround-sheet.jpg','assets/img/illust/anime/purple-dress-turnaround-sheet.jpg','assets/img/illust/anime/mint-character-concept-sheet.jpg']},
+      {kicker:'02 · KEY ILLUSTRATION',title:'키 일러스트',desc:'배경과 분위기, 캐릭터성이 함께 드러나는 완성 일러스트',layout:'key',images:['assets/img/illust/anime/purple-evening-illustration.jpg','assets/img/illust/anime/pink-cafe-character-illustration.jpg','assets/img/illust/anime/sci-fi-girl-illustration.png','assets/img/illust/anime/blue-suit-male-character.jpg','assets/img/illust/anime/anime-04.jpg','assets/img/illust/anime/anime-03.jpg','assets/img/illust/anime/anime-02.jpg','assets/img/illust/anime/anime-05.jpg','assets/img/illust/anime/anime-06.jpg']}
+    ]}
 };
 
 const backdrop=document.getElementById('backdrop'),modal=document.getElementById('modal'),mBack=document.getElementById('modal-back');
@@ -1066,7 +1088,13 @@ function openModal(id){
   var rawGallery=p.studioGallery||(p.images||[]).map(function(src,i){return {id:id+':'+i,src:src,time:(p.times&&p.times[i])||'',span:i===0?'wide':'single',visible:true,focal:{x:50,y:50}};});
   var gallery=rawGallery.filter(function(item){return item&&item.visible!==false&&item.src;});
   if(!gallery.length && !p.video){h+='<div class="work-slot" style="grid-column:1/-1;aspect-ratio:16/6;cursor:default"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(233,231,224,.25)">⚠ WORK IN PROGRESS — 이미지 준비중</div></div>';}
-  gallery.forEach(function(item,i){var src=htmlAttr(item.src),t=htmlAttr(item.time||''),n=String(i+1).padStart(2,'0'),span=['single','wide','full'].indexOf(item.span)>-1?item.span:'single',fx=item.focal&&Number.isFinite(Number(item.focal.x))?Number(item.focal.x):50,fy=item.focal&&Number.isFinite(Number(item.focal.y))?Number(item.focal.y):50;h+='<button type="button" class="work-slot has-img img-slot slot-'+span+'" data-time="'+t+'" onclick="lbOpenFromSlot(this)" aria-label="작품 이미지 '+n+' 확대 보기"><img src="'+src+'" loading="lazy" alt="'+htmlAttr(p.title||'작품')+' 이미지 '+(i+1)+'" draggable="false" style="object-position:'+fx+'% '+fy+'%"/><span class="slot-num">'+n+'</span>'+(t?'<span class="slot-time">'+t+'</span>':'')+'</button>';});
+  function gallerySlot(item,index){var src=htmlAttr(item.src),t=htmlAttr(item.time||''),n=String(index+1).padStart(2,'0'),span=['single','wide','full'].indexOf(item.span)>-1?item.span:'single',fx=item.focal&&Number.isFinite(Number(item.focal.x))?Number(item.focal.x):50,fy=item.focal&&Number.isFinite(Number(item.focal.y))?Number(item.focal.y):50;return '<button type="button" class="work-slot has-img img-slot slot-'+span+'" data-time="'+t+'" onclick="lbOpenFromSlot(this)" aria-label="작품 이미지 '+n+' 확대 보기"><img src="'+src+'" loading="lazy" alt="'+htmlAttr(p.title||'작품')+' 이미지 '+(index+1)+'" draggable="false" style="object-position:'+fx+'% '+fy+'%"/><span class="slot-num">'+n+'</span>'+(t?'<span class="slot-time">'+t+'</span>':'')+'</button>';}
+  if(p.imageSections&&p.imageSections.length){
+    var bySrc=new Map(gallery.map(function(item){return [item.src,item];})),used=new Set(),orderedIndex=0;
+    p.imageSections.forEach(function(section){var sectionItems=(section.images||[]).map(function(src){return bySrc.get(src);}).filter(Boolean);if(!sectionItems.length)return;var layout=['key','sheets'].indexOf(section.layout)>-1?section.layout:'key';h+='<section class="work-group layout-'+layout+'"><div class="work-group-head"><div><span class="work-group-kicker">'+htmlAttr(section.kicker||'')+'</span><h3 class="work-group-title">'+htmlAttr(section.title||'')+'</h3></div><p class="work-group-desc">'+htmlAttr(section.desc||'')+'</p></div><div class="work-group-grid">';sectionItems.forEach(function(item){used.add(item);h+=gallerySlot(item,orderedIndex++);});h+='</div></section>';});
+    var remaining=gallery.filter(function(item){return !used.has(item);});if(remaining.length){h+='<section class="work-group layout-key"><div class="work-group-head"><div><span class="work-group-kicker">MORE WORKS</span><h3 class="work-group-title">기타 작업</h3></div></div><div class="work-group-grid">';remaining.forEach(function(item){h+=gallerySlot(item,orderedIndex++);});h+='</div></section>';}
+  }else{gallery.forEach(function(item,i){h+=gallerySlot(item,i);});}
+  mWorks.classList.toggle('is-grouped',!!(p.imageSections&&p.imageSections.length));
   mWorks.innerHTML=h;
   modal.inert=false;modal.setAttribute('aria-hidden','false');backdrop.classList.add('open');modal.classList.add('open');document.body.classList.add('locked');modal.scrollTop=0;mBack.focus();
 }
